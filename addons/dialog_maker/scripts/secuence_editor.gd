@@ -67,7 +67,7 @@ func load_secuence(secuence: Array):
 		index += 1
 
 func add_dialogue():
-	var new_dialog: TreeNode.Dialogue = TreeNode.Dialogue.new()
+	var new_dialog: TreeRes.Dialogue = TreeRes.Dialogue.new()
 	current_node.secuence.append(new_dialog)
 	
 	var new_dialog_panel: DialoguePanel = DialoguePanelScene.instance()

@@ -4,7 +4,7 @@ class_name ChoiceNode
 
 func get_class(): return "ChoiceNode"
 
-var question: TreeNode.Dialogue = TreeNode.Dialogue.new()
+var question: TreeRes.Dialogue = TreeRes.Dialogue.new()
 var choices: Array = []
 
 func get_save_data() -> Dictionary:
@@ -32,7 +32,7 @@ func display_choices(only_question: bool = false):
 	
 	var i: int = 1
 	for choice in choices:
-		choice = choice as TreeNode.Choice
+		choice = choice as TreeRes.Choice
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
 		
 		var new_label = Label.new()

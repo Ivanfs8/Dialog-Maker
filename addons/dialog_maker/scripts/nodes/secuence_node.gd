@@ -23,7 +23,7 @@ func display_secuence():
 		label.queue_free()
 	var i: int = 1
 	for dialog in secuence:
-		dialog = dialog as TreeNode.Dialogue
+		dialog = dialog as TreeRes.Dialogue
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
 		
 		var new_label = Label.new()

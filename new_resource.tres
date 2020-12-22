@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_maker/scripts/tree_res.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+characters = [ "a", "b" ]
+nodes_data = [  ]
+connections = [  ]
+tree_data = {
+
+}

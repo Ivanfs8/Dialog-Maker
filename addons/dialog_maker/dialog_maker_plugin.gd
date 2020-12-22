@@ -6,21 +6,29 @@ const MainPanel: Script = preload("res://addons/dialog_maker/scripts/main_panel.
 
 var main_panel_instance: MainPanel
 
+var dock_button: ToolButton
+
 func _enter_tree():
 	main_panel_instance = MainPanelScene.instance()
+	main_panel_instance.undo_redo = get_undo_redo()
 	get_editor_interface().get_editor_viewport().add_child(main_panel_instance)
+#	dock_button = add_control_to_bottom_panel(main_panel_instance, "Dialog Maker")
 	make_visible(false)
 
 func _exit_tree():
-	if main_panel_instance:	main_panel_instance.queue_free()
+	if main_panel_instance:
+#		remove_control_from_bottom_panel(main_panel_instance)
+		main_panel_instance.queue_free()
 	OS.low_processor_usage_mode = false
 
 func has_main_screen():
 	return true
 
 func make_visible(visible):
+#	dock_button.visible = visible
 	if main_panel_instance:
 		main_panel_instance.visible = visible
+	
 	if !visible:
 #		main_panel_instance.set_tree_resource(null)
 		OS.low_processor_usage_mode = false
@@ -41,8 +49,9 @@ func handles(object):
 		return false
 
 func edit(object):
+	object = object as TreeRes
 	OS.low_processor_usage_mode = true
 	main_panel_instance.set_tree_resource(object)
 
 func save_external_data():
-	main_panel_instance.call_deferred("save_resource")
+	main_panel_instance.save_resource()

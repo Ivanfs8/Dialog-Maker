@@ -1,6 +1,17 @@
-tool
 extends Resource
-class_name TreeRes, "res://addons/dialog_maker/icons/GuiEllipsis.svg"
+class_name TreeRes
+
+const DIALOGUE: Dictionary = {
+	"chara_id": 0,
+	"text": ""
+}
+
+class Dialogue:
+	var character_id: int = 0
+	var text: String = ""
+
+class Choice:
+	var text: String = ""
 
 export (Array, String) var characters: Array = []
 

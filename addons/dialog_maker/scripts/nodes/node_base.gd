@@ -2,13 +2,6 @@ tool
 extends GraphNode
 class_name TreeNode
 
-class Dialogue:
-	var character_id: int = 0
-	var text: String = ""
-
-class Choice:
-	var text: String = ""
-
 func get_class(): return "TreeNode"
 
 func get_save_data() -> Dictionary:

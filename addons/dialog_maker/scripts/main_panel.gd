@@ -13,6 +13,8 @@ const ForcePreload = {
 	"ChoicePanel": preload("res://addons/dialog_maker/scripts/choice_panel.gd")
 }
 
+var undo_redo: UndoRedo
+
 var tree_resource: TreeRes = null setget set_tree_resource
 func set_tree_resource(tree: TreeRes):
 	if tree == null:
@@ -48,13 +50,14 @@ func invalid_tree_resource(text: String = "Please select a dialogue resource"):
 
 func save_resource():
 	if tree_resource != null:
-		
 		if secuence_editor.current_node != null:
 			secuence_editor.current_node.display_secuence()
 		if choice_editor.current_node != null:
 			choice_editor.current_node.display_choices()
 		
 		tree_graph.save_resource(tree_resource)
+		
+#		tree_resource.take_over_path(tree_resource.resource_path)
 		
 		var err := ResourceSaver.save(tree_resource.resource_path, tree_resource)
 		print(err)

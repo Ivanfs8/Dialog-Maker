@@ -51,7 +51,7 @@ _global_script_class_icons={
 "SecuenceNode": "",
 "StartNode": "",
 "TreeNode": "",
-"TreeRes": "res://addons/dialog_maker/icons/GuiEllipsis.svg"
+"TreeRes": ""
 }
 
 [application]

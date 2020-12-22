@@ -37,7 +37,7 @@ func clear_choices():
 		connect_choice(panel, true)
 		panel.free()
 
-func load_choices(question: TreeNode.Dialogue, choices: Array):
+func load_choices(question: TreeRes.Dialogue, choices: Array):
 	#load question
 	question_panel.load_dialogue(characters, question)
 	
@@ -72,7 +72,7 @@ func load_choices(question: TreeNode.Dialogue, choices: Array):
 		index += 1
 
 func add_choice():
-	var new_choice: TreeNode.Choice = TreeNode.Choice.new()
+	var new_choice: TreeRes.Choice = TreeRes.Choice.new()
 	current_node.choices.append(new_choice)
 	
 	var new_choice_panel: ChoicePanel = ChoicePanelScene.instance()
