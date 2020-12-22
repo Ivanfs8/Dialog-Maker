@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/dialog_maker/scripts/tree_editor.gd" type="Script" id=1]
+[ext_resource path="res://addons/dialog_maker/scripts/main_panel.gd" type="Script" id=2]
+[ext_resource path="res://addons/dialog_maker/scenes/SecuenceEditor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/dialog_maker/scenes/ChoiceEditor.tscn" type="PackedScene" id=4]
+
+[node name="TreeEditorContainer" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 405.0
+margin_top = 293.0
+margin_right = 619.0
+margin_bottom = 307.0
+size_flags_horizontal = 4
+text = "Please select a dialogue resource"
+align = 1
+valign = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+
+[node name="TreeVBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
+margin_right = 805.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/TreeVBoxContainer"]
+margin_right = 805.0
+margin_bottom = 34.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/TreeVBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 798.0
+margin_bottom = 27.0
+
+[node name="SecuenceButton" type="Button" parent="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer"]
+margin_right = 73.0
+margin_bottom = 20.0
+text = "Secuence"
+
+[node name="ChoiceButton" type="Button" parent="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 77.0
+margin_right = 132.0
+margin_bottom = 20.0
+text = "Choice"
+
+[node name="TreeGraphEdit" type="GraphEdit" parent="HSplitContainer/TreeVBoxContainer"]
+margin_top = 38.0
+margin_right = 805.0
+margin_bottom = 586.0
+rect_min_size = Vector2( 500, 500 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_offset = Vector2( -259, -56 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupMenu" type="PopupMenu" parent="HSplitContainer/TreeVBoxContainer/TreeGraphEdit"]
+margin_right = 81.0
+margin_bottom = 52.0
+items = [ "Secuence", null, 0, false, false, 0, 0, null, "", false, "Choice", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer"]
+margin_left = 817.0
+margin_right = 1010.0
+margin_bottom = 586.0
+
+[node name="SecuenceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 3 )]
+visible = false
+margin_right = 54.0
+margin_bottom = 586.0
+
+[node name="ChoiceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
+margin_left = 58.0
+margin_right = 193.0
+margin_bottom = 586.0
+[connection signal="pressed" from="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer/SecuenceButton" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="add_node" flags=3 binds= [ "Secuence" ]]
+[connection signal="connection_request" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_connection_request"]
+[connection signal="connection_to_empty" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_connection_to_empty"]
+[connection signal="disconnection_request" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_disconnection_request"]
+[connection signal="node_selected" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="." method="_on_TreeGraphEdit_node_selected"]
+[connection signal="popup_request" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_popup_request"]
+[connection signal="id_pressed" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit/PopupMenu" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_PopupMenu_id_pressed"]
+[connection signal="popup_hide" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit/PopupMenu" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_PopupMenu_popup_hide"]

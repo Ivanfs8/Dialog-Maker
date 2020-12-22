@@ -1,0 +1,65 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "TreeNode",
+"class": "ChoiceNode",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/nodes/choice_node.gd"
+}, {
+"base": "PanelContainer",
+"class": "ChoicePanel",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/choice_panel.gd"
+}, {
+"base": "PanelContainer",
+"class": "DialoguePanel",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/dialogue_panel.gd"
+}, {
+"base": "TreeNode",
+"class": "SecuenceNode",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/nodes/secuence_node.gd"
+}, {
+"base": "TreeNode",
+"class": "StartNode",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/nodes/start_node.gd"
+}, {
+"base": "GraphNode",
+"class": "TreeNode",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/nodes/node_base.gd"
+}, {
+"base": "Resource",
+"class": "TreeRes",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/tree_res.gd"
+} ]
+_global_script_class_icons={
+"ChoiceNode": "",
+"ChoicePanel": "",
+"DialoguePanel": "",
+"SecuenceNode": "",
+"StartNode": "",
+"TreeNode": "",
+"TreeRes": "res://addons/dialog_maker/icons/GuiEllipsis.svg"
+}
+
+[application]
+
+config/name="Dialog Maker v2"
+run/main_scene="res://scenes/Node2D.tscn"
+config/icon="res://icon.png"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

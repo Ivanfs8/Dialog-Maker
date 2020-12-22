@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_maker/scripts/secuence_editor.gd" type="Script" id=1]
+
+[node name="SecuenceEditor" type="PanelContainer"]
+margin_right = 300.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 293.0
+margin_bottom = 413.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_right = 286.0
+margin_bottom = 382.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="DialoguesVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 286.0
+margin_bottom = 382.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddDialogueButton" type="Button" parent="VBoxContainer"]
+margin_left = 123.0
+margin_top = 386.0
+margin_right = 163.0
+margin_bottom = 406.0
+rect_min_size = Vector2( 40, 0 )
+rect_pivot_offset = Vector2( 20, 10 )
+size_flags_horizontal = 4
+text = "+"
+[connection signal="pressed" from="VBoxContainer/AddDialogueButton" to="." method="add_dialogue"]
