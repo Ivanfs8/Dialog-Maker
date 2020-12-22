@@ -3,8 +3,9 @@
 [ext_resource path="res://addons/dialog_maker/scripts/nodes/choice_node.gd" type="Script" id=1]
 
 [node name="ChoiceNode" type="GraphNode"]
-margin_right = 32.0
-margin_bottom = 30.0
+margin_right = 100.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 70 )
 title = "Choice"
 show_close = true
 resizable = true
@@ -22,6 +23,8 @@ __meta__ = {
 [node name="Question" type="Label" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 75.0
+margin_right = 84.0
 margin_bottom = 38.0
 text = "Question"
+autowrap = true
+max_lines_visible = 2

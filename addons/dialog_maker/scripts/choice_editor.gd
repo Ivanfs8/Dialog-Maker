@@ -37,7 +37,7 @@ func clear_choices():
 		connect_choice(panel, true)
 		panel.free()
 
-func load_choices(question: TreeRes.Dialogue, choices: Array):
+func load_choices(question: Dictionary, choices: Array):
 	#load question
 	question_panel.load_dialogue(characters, question)
 	
@@ -72,7 +72,7 @@ func load_choices(question: TreeRes.Dialogue, choices: Array):
 		index += 1
 
 func add_choice():
-	var new_choice: TreeRes.Choice = TreeRes.Choice.new()
+	var new_choice: String = ""
 	current_node.choices.append(new_choice)
 	
 	var new_choice_panel: ChoicePanel = ChoicePanelScene.instance()
@@ -99,7 +99,7 @@ func delete_choice(choice_panel: ChoicePanel):
 	current_node.display_choices()
 
 func move_choice(choice_panel: ChoicePanel, new_index: int):
-	var choice = current_node.choices[choice_panel.index]
+	var choice: String = current_node.choices[choice_panel.index]
 	current_node.choices.remove(choice_panel.index)
 	current_node.choices.insert(new_index, choice)
 	
@@ -113,7 +113,7 @@ func on_edit_choice(choice_panel: ChoicePanel):
 	current_node.display_choices()
 
 func on_edit_question():
-	current_node.question.character_id = question_panel.character_option.selected
-	current_node.question.text = question_panel.text_edit.text
+	current_node.question["chara_id"] = question_panel.character_option.selected
+	current_node.question["text"] = question_panel.text_edit.text
 	
 	current_node.display_choices(true)

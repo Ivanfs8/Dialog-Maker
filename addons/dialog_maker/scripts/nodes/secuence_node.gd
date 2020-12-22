@@ -23,11 +23,11 @@ func display_secuence():
 		label.queue_free()
 	var i: int = 1
 	for dialog in secuence:
-		dialog = dialog as TreeRes.Dialogue
+		dialog = dialog as Dictionary
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
 		
 		var new_label = Label.new()
-		new_label.text = "[" + String(dialog.character_id) + "] " + dialog.text
+		new_label.text = "[" + String(dialog["chara_id"]) + "] " + dialog["text"]
 		add_child(new_label)
 #		set_slot(i, false, 0, Color.white, true, 0, Color.white)
 		

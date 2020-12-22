@@ -9,13 +9,11 @@ var index: int
 onready var text_edit: TextEdit = $HBoxContainer/TextEdit
 onready var delete_button: Button = $HBoxContainer/DeleteButton
 
-func load_choice(choice: TreeRes.Choice):
-	text_edit.text = choice.text
+func load_choice(choice: String):
+	text_edit.text = choice
 
-func get_choice() -> TreeRes.Choice:
-	var choice = TreeRes.Choice.new()
-	choice.text = text_edit.text
-	return choice
-
+func get_choice() -> String:
+	return text_edit.text
+	
 func on_edit():
 	emit_signal("choice_edited")

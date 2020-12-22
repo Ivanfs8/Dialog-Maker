@@ -5,8 +5,46 @@
 [resource]
 script = ExtResource( 1 )
 characters = [ "a", "b" ]
-nodes_data = [  ]
-connections = [  ]
+nodes_data = [ {
+"name": "StartNode",
+"offset": Vector2( 143.5, 218 ),
+"size": Vector2( 88, 40 ),
+"type": "StartNode"
+}, {
+"name": "SecuenceNode",
+"offset": Vector2( 300, 240 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "asfasf"
+}, {
+"chara_id": 1,
+"text": "sfafsfffff"
+} ],
+"size": Vector2( 143, 147 ),
+"type": "SecuenceNode"
+}, {
+"choices": [ "asffsafsfffff", "asfffff" ],
+"name": "ChoiceNode",
+"offset": Vector2( 560, 220 ),
+"question": {
+"chara_id": 0,
+"character_id": 1,
+"text": "asfasf"
+},
+"size": Vector2( 141, 163 ),
+"type": "ChoiceNode"
+} ]
+connections = [ {
+"from": "StartNode",
+"from_port": 0,
+"to": "SecuenceNode",
+"to_port": 0
+}, {
+"from": "SecuenceNode",
+"from_port": 0,
+"to": "ChoiceNode",
+"to_port": 0
+} ]
 tree_data = {
 
 }

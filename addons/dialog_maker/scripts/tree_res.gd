@@ -6,13 +6,6 @@ const DIALOGUE: Dictionary = {
 	"text": ""
 }
 
-class Dialogue:
-	var character_id: int = 0
-	var text: String = ""
-
-class Choice:
-	var text: String = ""
-
 export (Array, String) var characters: Array = []
 
 export var nodes_data: Array = []

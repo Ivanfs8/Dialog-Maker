@@ -4,7 +4,7 @@ class_name ChoiceNode
 
 func get_class(): return "ChoiceNode"
 
-var question: TreeRes.Dialogue = TreeRes.Dialogue.new()
+var question: Dictionary = TreeRes.DIALOGUE
 var choices: Array = []
 
 func get_save_data() -> Dictionary:
@@ -22,7 +22,7 @@ func load_save_data(save_data: Dictionary):
 	display_choices()
 
 func display_choices(only_question: bool = false):
-	$Question.text = "[" + String(question.character_id) + "] " + question.text
+	$Question.text = "[" + String(question["chara_id"]) + "] " + question["text"]
 	if only_question: return
 	
 	var labels: Array = get_labels()
@@ -32,11 +32,11 @@ func display_choices(only_question: bool = false):
 	
 	var i: int = 1
 	for choice in choices:
-		choice = choice as TreeRes.Choice
+		choice = choice as String
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
 		
 		var new_label = Label.new()
-		new_label.text = choice.text
+		new_label.text = choice
 		add_child(new_label)
 		set_slot(i, false, 0, Color.white, true, 0, Color.white)
 		

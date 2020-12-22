@@ -3,8 +3,9 @@
 [ext_resource path="res://addons/dialog_maker/scripts/nodes/secuence_node.gd" type="Script" id=1]
 
 [node name="SecuenceNode" type="GraphNode"]
-margin_right = 106.0
-margin_bottom = 63.0
+margin_right = 110.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 110, 60 )
 title = "Secuence"
 show_close = true
 resizable = true
@@ -22,6 +23,6 @@ __meta__ = {
 [node name="Control" type="Control" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 90.0
+margin_right = 94.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 0, 10 )
