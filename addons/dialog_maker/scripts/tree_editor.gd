@@ -30,7 +30,10 @@ func connect_graph_node(node: GraphNode, disconect: bool = false):
 		node.connect("close_request", self, "_on_node_close", [node])
 	else:
 		node.disconnect("raise_request", self, "set_selected_node")
-		node.disconnect("resize_request", self, "_on_node_resize")
+		if node.has_signal("resize_request"):
+			node.disconnect("resize_request", self, "_on_node_resize")
+		else:
+			print(node.name)
 		node.disconnect("close_request", self, "_on_node_close")
 
 func save_resource(res: TreeRes):

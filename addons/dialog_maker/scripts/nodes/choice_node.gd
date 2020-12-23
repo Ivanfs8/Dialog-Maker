@@ -35,7 +35,10 @@ func display_choices(only_question: bool = false):
 		choice = choice as String
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
 		
-		var new_label = Label.new()
+		var new_label: Label = Label.new()
+		new_label.autowrap = true
+		new_label.max_lines_visible = 2
+		
 		new_label.text = choice
 		add_child(new_label)
 		set_slot(i, false, 0, Color.white, true, 0, Color.white)

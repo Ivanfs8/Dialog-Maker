@@ -57,10 +57,13 @@ func save_resource():
 		
 		tree_graph.save_resource(tree_resource)
 		
+		var tree_data: TreeData = TreeData.new(tree_resource)
+		tree_resource.tree_data = tree_data.make_tree_data()
 #		tree_resource.take_over_path(tree_resource.resource_path)
 		
 		var err := ResourceSaver.save(tree_resource.resource_path, tree_resource)
-		print(err)
+		if err == OK: print("Saved " + tree_resource.resource_name + " succesfully")
+		else: print(err)
 
 func _on_TreeGraphEdit_node_selected(node: TreeNode):
 	secuence_editor.hide()
@@ -77,3 +80,56 @@ func _on_TreeGraphEdit_node_selected(node: TreeNode):
 			choice_editor.characters = tree_resource.characters
 			choice_editor.set_current_node(node)
 			choice_editor.show()
+
+class TreeData:
+	var nodes_data: Array
+	var connections: Array
+	var tree_data: Dictionary = {}
+	
+	func _init(tree: TreeRes):
+		nodes_data = tree.nodes_data
+		connections = tree.connections
+	
+	func make_tree_data() -> Dictionary:
+		if nodes_data.empty():
+			return {}
+		
+		var index: int = 0
+		for node in nodes_data:
+			match node["type"]:
+				"SecuenceNode", "StartNode": node["next"] = get_next(node["name"])
+				"ChoiceNode": node["paths"] = get_paths(node)
+			
+			tree_data[index] = node
+			index += 1
+		
+		return tree_data
+
+	func get_next(name: String) -> int:
+		for c in connections:
+			if c["from"] == name: return get_index_of_node(c["to"])
+		
+		return -1
+
+	func get_paths(node: Dictionary) -> Array:
+		var paths: Array
+		for choice in node["choices"]:
+			paths.append(-1)
+		
+	#	var i: int = 0
+		for c in connections:
+			if c["from"] == node["name"]:
+				paths[c["from_port"]] = get_index_of_node(c["to"])
+			
+	#		i += 1
+		
+		return paths
+
+	func get_index_of_node(name: String) -> int:
+		var index : int = 0
+		for node in nodes_data:
+			if node["name"] == name:
+				return index
+			
+			index += 1
+		return -1

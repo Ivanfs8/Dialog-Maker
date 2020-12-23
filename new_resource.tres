@@ -7,31 +7,48 @@ script = ExtResource( 1 )
 characters = [ "a", "b" ]
 nodes_data = [ {
 "name": "StartNode",
+"next": 3,
 "offset": Vector2( 143.5, 218 ),
 "size": Vector2( 88, 40 ),
 "type": "StartNode"
 }, {
+"name": "SecuenceNode2",
+"next": -1,
+"offset": Vector2( 780, 180 ),
+"secuence": [  ],
+"size": Vector2( 137, 60 ),
+"type": "SecuenceNode"
+}, {
+"name": "SecuenceNode3",
+"next": -1,
+"offset": Vector2( 780, 380 ),
+"secuence": [  ],
+"size": Vector2( 137, 60 ),
+"type": "SecuenceNode"
+}, {
 "name": "SecuenceNode",
+"next": 4,
 "offset": Vector2( 300, 240 ),
 "secuence": [ {
 "chara_id": 0,
-"text": "asfasf"
+"text": "asfasfaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaa"
 }, {
 "chara_id": 1,
 "text": "sfafsfffff"
 } ],
-"size": Vector2( 143, 147 ),
+"size": Vector2( 150, 175 ),
 "type": "SecuenceNode"
 }, {
-"choices": [ "asffsafsfffff", "asfffff" ],
+"choices": [ "asffsafsfffffa", "asfffff", "fffff" ],
 "name": "ChoiceNode",
-"offset": Vector2( 560, 220 ),
+"offset": Vector2( 520, 240 ),
+"paths": [ 1, -1, 2 ],
 "question": {
 "chara_id": 0,
 "character_id": 1,
 "text": "asfasf"
 },
-"size": Vector2( 141, 163 ),
+"size": Vector2( 149, 301 ),
 "type": "ChoiceNode"
 } ]
 connections = [ {
@@ -44,7 +61,66 @@ connections = [ {
 "from_port": 0,
 "to": "ChoiceNode",
 "to_port": 0
+}, {
+"from": "ChoiceNode",
+"from_port": 0,
+"to": "SecuenceNode2",
+"to_port": 0
+}, {
+"from": "ChoiceNode",
+"from_port": 2,
+"to": "SecuenceNode3",
+"to_port": 0
 } ]
 tree_data = {
-
+0: {
+"name": "StartNode",
+"next": 3,
+"offset": Vector2( 143.5, 218 ),
+"size": Vector2( 88, 40 ),
+"type": "StartNode"
+},
+1: {
+"name": "SecuenceNode2",
+"next": -1,
+"offset": Vector2( 780, 180 ),
+"secuence": [  ],
+"size": Vector2( 137, 60 ),
+"type": "SecuenceNode"
+},
+2: {
+"name": "SecuenceNode3",
+"next": -1,
+"offset": Vector2( 780, 380 ),
+"secuence": [  ],
+"size": Vector2( 137, 60 ),
+"type": "SecuenceNode"
+},
+3: {
+"name": "SecuenceNode",
+"next": 4,
+"offset": Vector2( 300, 240 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "asfasfaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaa"
+}, {
+"chara_id": 1,
+"text": "sfafsfffff"
+} ],
+"size": Vector2( 150, 175 ),
+"type": "SecuenceNode"
+},
+4: {
+"choices": [ "asffsafsfffffa", "asfffff", "fffff" ],
+"name": "ChoiceNode",
+"offset": Vector2( 520, 240 ),
+"paths": [ 1, -1, 2 ],
+"question": {
+"chara_id": 0,
+"character_id": 1,
+"text": "asfasf"
+},
+"size": Vector2( 149, 301 ),
+"type": "ChoiceNode"
+}
 }

@@ -27,6 +27,9 @@ func display_secuence():
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
 		
 		var new_label = Label.new()
+		new_label.autowrap = true
+		new_label.max_lines_visible = 2
+		
 		new_label.text = "[" + String(dialog["chara_id"]) + "] " + dialog["text"]
 		add_child(new_label)
 #		set_slot(i, false, 0, Color.white, true, 0, Color.white)

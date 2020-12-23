@@ -8,6 +8,6 @@ const DIALOGUE: Dictionary = {
 
 export (Array, String) var characters: Array = []
 
-export var nodes_data: Array = []
-export var connections: Array = []
-export var tree_data: Dictionary = {}
+export var nodes_data: Array = [] #type, name, offset, size
+export var connections: Array = [] #from(name), from_port, to(name), to_port
+export var tree_data: Dictionary = {} #obtained from main_panel>TreeData>make_tree_data()
