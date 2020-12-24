@@ -1,13 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/nodes/choice_node.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialog_maker/themes_styles/node_frame.stylebox" type="StyleBox" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 28.0
+content_margin_right = 28.0
+content_margin_top = 34.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0, 0, 0.7 )
+border_width_left = 1
+border_width_top = 24
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.882353, 0.8, 0.164706, 1 )
 
 [node name="ChoiceNode" type="GraphNode"]
 margin_right = 100.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 70 )
-custom_styles/frame = ExtResource( 2 )
+custom_styles/frame = SubResource( 1 )
+custom_styles/selectedframe = ExtResource( 2 )
 custom_colors/close_color = Color( 0, 0, 0, 1 )
 custom_colors/title_color = Color( 0, 0, 0, 1 )
 custom_colors/resizer_color = Color( 1, 1, 1, 1 )
@@ -27,9 +40,9 @@ __meta__ = {
 
 [node name="Question" type="Label" parent="."]
 margin_left = 28.0
-margin_top = 24.0
+margin_top = 34.0
 margin_right = 84.0
-margin_bottom = 55.0
+margin_bottom = 65.0
 text = "Question"
 autowrap = true
 max_lines_visible = 2

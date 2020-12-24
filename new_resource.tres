@@ -9,10 +9,23 @@ script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 3 ) ]
 nodes_data = [ {
 "name": "StartNode",
-"next": 2,
+"next": 1,
 "offset": Vector2( 100, 120 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
+}, {
+"name": "SecuenceNode",
+"next": 2,
+"offset": Vector2( 300, 40 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "fffffffff"
+}, {
+"chara_id": 1,
+"text": "???????"
+} ],
+"size": Vector2( 137, 199 ),
+"type": "SecuenceNode"
 }, {
 "choices": [ "a", "b" ],
 "name": "ChoiceNode",
@@ -24,19 +37,6 @@ nodes_data = [ {
 },
 "size": Vector2( 124, 205 ),
 "type": "ChoiceNode"
-}, {
-"name": "SecuenceNode",
-"next": 1,
-"offset": Vector2( 300, 40 ),
-"secuence": [ {
-"chara_id": 0,
-"text": "fffffffff"
-}, {
-"chara_id": 1,
-"text": "???????"
-} ],
-"size": Vector2( 137, 199 ),
-"type": "SecuenceNode"
 } ]
 connections = [ {
 "from": "StartNode",
@@ -52,26 +52,14 @@ connections = [ {
 tree_data = {
 0: {
 "name": "StartNode",
-"next": 2,
+"next": 1,
 "offset": Vector2( 100, 120 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
 },
 1: {
-"choices": [ "a", "b" ],
-"name": "ChoiceNode",
-"offset": Vector2( 540, 80 ),
-"paths": [ -1, -1 ],
-"question": {
-"chara_id": 0,
-"text": ""
-},
-"size": Vector2( 124, 205 ),
-"type": "ChoiceNode"
-},
-2: {
 "name": "SecuenceNode",
-"next": 1,
+"next": 2,
 "offset": Vector2( 300, 40 ),
 "secuence": [ {
 "chara_id": 0,
@@ -82,5 +70,17 @@ tree_data = {
 } ],
 "size": Vector2( 137, 199 ),
 "type": "SecuenceNode"
+},
+2: {
+"choices": [ "a", "b" ],
+"name": "ChoiceNode",
+"offset": Vector2( 540, 80 ),
+"paths": [ -1, -1 ],
+"question": {
+"chara_id": 0,
+"text": ""
+},
+"size": Vector2( 124, 205 ),
+"type": "ChoiceNode"
 }
 }
