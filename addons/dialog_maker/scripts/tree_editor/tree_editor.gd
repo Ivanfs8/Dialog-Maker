@@ -9,13 +9,13 @@ const ChoiceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/n
 onready var popup_menu: PopupMenu = $PopupMenu
 var auto_connect: Dictionary = {}
 
-var selected_node: GraphNode = null setget set_selected_node
-func set_selected_node(node: GraphNode):
-	selected_node = node
+#graphedit does all the signals connections for selected node automatically, 
+#even thou the rest of the graphnode signals have to be set manually :/
 
-#func _exit_tree():
-#	for node in get_nodes():
-#		connect_graph_node(node, true)
+#var selected_node: GraphNode = null
+#func _graph_node_raised(node: Node):
+#	set_selected(node)
+#	selected_node = node
 
 func get_nodes() -> Array:
 	var nodes: Array = []
@@ -23,18 +23,10 @@ func get_nodes() -> Array:
 		if node is GraphNode: nodes.append(node)
 	return nodes
 
-func connect_graph_node(node: GraphNode, disconect: bool = false):
-	if !disconect:
-		node.connect("raise_request", self, "set_selected_node", [node])
-		node.connect("resize_request", self, "_on_node_resize", [node])
-		node.connect("close_request", self, "_on_node_close", [node])
-#	else:
-#		node.disconnect("raise_request", self, "set_selected_node")
-#		if node.has_signal("resize_request"):
-#			node.disconnect("resize_request", self, "_on_node_resize")
-#		else:
-#			print(node.name)
-#		node.disconnect("close_request", self, "_on_node_close")
+func connect_graph_node(node: GraphNode):
+#	node.connect("raise_request", self, "_graph_node_raised")
+	node.connect("resize_request", self, "_on_node_resize", [node])
+	node.connect("close_request", self, "_on_node_close", [node])
 
 func save_resource(res: TreeRes):
 	res.nodes_data.clear()
@@ -53,15 +45,6 @@ func load_resource(tree: TreeRes):
 		for node_data in tree.nodes_data:
 			var node: TreeNode = add_node(node_data["type"])
 			node.load_save_data(node_data)
-		
-		#Check for the start node
-#		var has_start_node: bool = false
-#		for node in get_nodes():
-#			if node.get_class() == "StartNode":
-#				has_start_node = true
-#		if !has_start_node:
-#			var new_node: StartNode = add_node("Start")
-#			move_child(new_node, 0)
 	
 	#load all saved connections
 	if !tree.connections.empty():
@@ -87,9 +70,9 @@ func add_node(type: String, pos: Vector2 = rect_size * 0.5 + scroll_offset):
 #Clear Graph
 func clear_all_nodes():
 	clear_connections()
-	for node in get_nodes(): 
-#		connect_graph_node(node, true)
-		node.free()
+	for node in get_nodes():
+#		node = node as GraphNode
+		node.queue_free()
 
 # removes connections going from an id
 func remove_connection(id, node):
@@ -111,14 +94,14 @@ func _on_node_close(ref: GraphNode):
 	ref.queue_free()
 
 func _on_TreeGraphEdit_connection_request(from, from_slot, to, to_slot):
-	#assure there's only one connection per slot, if true overwrite
-	var all_connections = get_connection_list() 	# {from_port: 0, from: "GraphNode name 0", to_port: 1, to: "GraphNode name 1" }
+	#assure there's only one connection per slot, if true overwrite with new connection
+	# c = {from_port: 0, from: "GraphNode name 0", to_port: 1, to: "GraphNode name 1" }
 	var slot_connections = []
-	for connection in all_connections:
-		if connection["from"] == from and connection["from_port"] == from_slot:
-			slot_connections.append(connection)
-	for slot_connection in slot_connections:
-		disconnect_node(slot_connection["from"], slot_connection["from_port"], slot_connection["to"], slot_connection["to_port"])
+	for c in get_connection_list():
+		if c["from"] == from and c["from_port"] == from_slot:
+			slot_connections.append(c)
+	for c in slot_connections:
+		disconnect_node(c["from"], c["from_port"], c["to"], c["to_port"])
 	
 	connect_node(from, from_slot, to, to_slot)
 

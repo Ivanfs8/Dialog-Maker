@@ -5,11 +5,8 @@ class_name TreeNode
 func get_class(): return "TreeNode"
 
 func _exit_tree():
-#	node.connect("raise_request", self, "set_selected_node", [node])
-#		node.connect("resize_request", self, "_on_node_resize", [node])
-#		node.connect("close_request", self, "_on_node_close", [node])
-	for sig in get_signal_connection_list("raise_request"):
-		disconnect(sig["signal"], sig["target"], sig["method"])
+#	for sig in get_signal_connection_list("raise_request"):
+#		disconnect(sig["signal"], sig["target"], sig["method"])
 	for sig in get_signal_connection_list("resize_request"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 	for sig in get_signal_connection_list("close_request"):
