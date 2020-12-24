@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://addons/dialog_maker/scripts/dialogue_panel.gd" type="Script" id=1]
+[ext_resource path="res://addons/dialog_maker/scripts/tree_editor/dialogue_panel.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialog_maker/icons/DeleteIcon.svg" type="Texture" id=2]
 
 [node name="DialoguePanel" type="PanelContainer"]

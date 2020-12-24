@@ -6,7 +6,7 @@ const DIALOGUE: Dictionary = {
 	"text": ""
 }
 
-export (Array, String) var characters: Array = []
+export (Array, Resource) var characters: Array = []
 
 export var nodes_data: Array = [] #type, name, offset, size
 export var connections: Array = [] #from(name), from_port, to(name), to_port

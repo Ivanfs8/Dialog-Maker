@@ -8,9 +8,9 @@ const ForcePreload = {
 	"SecuenceNode": preload("res://addons/dialog_maker/scripts/nodes/secuence_node.gd"),
 	"ChoiceNode": preload("res://addons/dialog_maker/scripts/nodes/choice_node.gd"),
 	"SecuenceEditor": preload("res://addons/dialog_maker/scripts/nodes/secuence_node.gd"),
-	"DialoguePanel": preload("res://addons/dialog_maker/scripts/dialogue_panel.gd"),
-	"ChoiceEditor": preload("res://addons/dialog_maker/scripts/choice_editor.gd"),
-	"ChoicePanel": preload("res://addons/dialog_maker/scripts/choice_panel.gd")
+	"DialoguePanel": preload("res://addons/dialog_maker/scripts/tree_editor/dialogue_panel.gd"),
+	"ChoiceEditor": preload("res://addons/dialog_maker/scripts/tree_editor/choice_editor.gd"),
+	"ChoicePanel": preload("res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd")
 }
 
 var undo_redo: UndoRedo
@@ -31,6 +31,9 @@ func set_tree_resource(tree: TreeRes):
 	
 	secuence_editor.characters = tree_resource.characters
 	choice_editor.characters = tree_resource.characters
+	
+	character_tab.set_tree_resource(tree_resource)
+	
 	$Label.hide()
 	$HSplitContainer.show()
 
@@ -38,10 +41,18 @@ onready var tree_graph: GraphEdit = $HSplitContainer/TreeVBoxContainer/TreeGraph
 onready var secuence_editor = $HSplitContainer/HBoxContainer/SecuenceEditor
 onready var choice_editor = $HSplitContainer/HBoxContainer/ChoiceEditor
 
+onready var settings_tabs: TabContainer = $HSplitContainer/SettingsTabContainer
+onready var character_tab: VBoxContainer = $HSplitContainer/SettingsTabContainer/Characters
+
 func _ready():
 	invalid_tree_resource()
 	secuence_editor.hide()
 	choice_editor.hide()
+	
+	settings_tabs.hide()
+	
+	character_tab.connect("character_changed", secuence_editor, "on_characters_change")
+	character_tab.connect("character_changed", choice_editor, "on_characters_change")
 
 func invalid_tree_resource(text: String = "Please select a dialogue resource"):
 	$Label.text = text
@@ -66,11 +77,14 @@ func save_resource():
 		else: print(err)
 
 func _on_TreeGraphEdit_node_selected(node: TreeNode):
+	settings_tabs.hide()
+	
 	secuence_editor.hide()
 	secuence_editor.current_node = null
 	choice_editor.hide()
 	choice_editor.current_node = null
 	
+#	character_tab.characters = tree_resource.characters
 	match node.get_class():
 		"SecuenceNode": 
 			secuence_editor.characters = tree_resource.characters
@@ -133,3 +147,14 @@ class TreeData:
 			
 			index += 1
 		return -1
+
+func _on_SettingsButton_toggled(button_pressed):
+	if button_pressed:
+		secuence_editor.hide()
+		secuence_editor.current_node = null
+		choice_editor.hide()
+		choice_editor.current_node = null
+		
+		settings_tabs.show()
+	else:
+		settings_tabs.hide()

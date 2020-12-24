@@ -1,11 +1,27 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/nodes/secuence_node.gd" type="Script" id=1]
 
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 28.0
+content_margin_right = 28.0
+content_margin_top = 34.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0, 0, 0.7 )
+border_width_left = 1
+border_width_top = 24
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.14902, 0.501961, 0.74902, 0.901961 )
+
 [node name="SecuenceNode" type="GraphNode"]
-margin_right = 110.0
+margin_right = 130.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 110, 60 )
+custom_styles/frame = SubResource( 1 )
+custom_colors/close_color = Color( 0, 0, 0, 1 )
+custom_colors/title_color = Color( 0, 0, 0, 1 )
+custom_colors/resizer_color = Color( 1, 1, 1, 1 )
 title = "Secuence"
 show_close = true
 resizable = true
@@ -21,8 +37,8 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="."]
-margin_left = 16.0
-margin_top = 24.0
-margin_right = 94.0
-margin_bottom = 34.0
+margin_left = 28.0
+margin_top = 34.0
+margin_right = 102.0
+margin_bottom = 44.0
 rect_min_size = Vector2( 0, 10 )

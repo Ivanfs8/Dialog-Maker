@@ -3,10 +3,9 @@ extends EditorPlugin
 
 const MainPanelScene: PackedScene = preload("res://addons/dialog_maker/scenes/TreeEditor.tscn")
 const MainPanel: Script = preload("res://addons/dialog_maker/scripts/main_panel.gd")
+#const InspectorPlugin: Script = preload("res://addons/dialog_maker/inspector_plugin.gd")
 
 var main_panel_instance: MainPanel
-
-var dock_button: ToolButton
 
 func _enter_tree():
 	main_panel_instance = MainPanelScene.instance()
@@ -14,6 +13,17 @@ func _enter_tree():
 	get_editor_interface().get_editor_viewport().add_child(main_panel_instance)
 #	dock_button = add_control_to_bottom_panel(main_panel_instance, "Dialog Maker")
 	make_visible(false)
+	
+	var directory: Directory = Directory.new()
+	if !directory.dir_exists("res://dialog_maker_resources/"):
+		var err := directory.make_dir("res://dialog_maker_resources/")
+		print(err)
+	if !directory.dir_exists("res://dialog_maker_resources/characters"):
+		var err = directory.make_dir("res://dialog_maker_resources/characters")
+		print(err)
+	if !directory.dir_exists("res://dialog_maker_resources/dialogues"):
+		var err = directory.make_dir("res://dialog_maker_resources/dialogues")
+		print(err)
 
 func _exit_tree():
 	if main_panel_instance:
@@ -52,6 +62,7 @@ func edit(object):
 	object = object as TreeRes
 	OS.low_processor_usage_mode = true
 	main_panel_instance.set_tree_resource(object)
-
+	
 func save_external_data():
-	main_panel_instance.save_resource()
+	if main_panel_instance:
+		main_panel_instance.save_resource()

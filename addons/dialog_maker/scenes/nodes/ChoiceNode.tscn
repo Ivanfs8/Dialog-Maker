@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/nodes/choice_node.gd" type="Script" id=1]
+[ext_resource path="res://addons/dialog_maker/themes_styles/node_frame.stylebox" type="StyleBox" id=2]
 
 [node name="ChoiceNode" type="GraphNode"]
 margin_right = 100.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 70 )
+custom_styles/frame = ExtResource( 2 )
+custom_colors/close_color = Color( 0, 0, 0, 1 )
+custom_colors/title_color = Color( 0, 0, 0, 1 )
+custom_colors/resizer_color = Color( 1, 1, 1, 1 )
 title = "Choice"
 show_close = true
 resizable = true
@@ -21,10 +26,10 @@ __meta__ = {
 }
 
 [node name="Question" type="Label" parent="."]
-margin_left = 16.0
+margin_left = 28.0
 margin_top = 24.0
 margin_right = 84.0
-margin_bottom = 38.0
+margin_bottom = 55.0
 text = "Question"
 autowrap = true
 max_lines_visible = 2

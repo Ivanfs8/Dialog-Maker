@@ -21,7 +21,7 @@ func load_save_data(save_data: Dictionary):
 func display_secuence():
 	for label in get_labels():
 		label.queue_free()
-	var i: int = 1
+	
 	for dialog in secuence:
 		dialog = dialog as Dictionary
 #		print("[" + String(dialog.character_id) + "] " + dialog.text)
@@ -33,7 +33,5 @@ func display_secuence():
 		new_label.text = "[" + String(dialog["chara_id"]) + "] " + dialog["text"]
 		add_child(new_label)
 #		set_slot(i, false, 0, Color.white, true, 0, Color.white)
-		
-		i+=1
 
 
