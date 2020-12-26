@@ -1,3 +1,31 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/dialog_maker/scripts/custom_nodes/dialog_node.gd" type="Script" id=1]
+[ext_resource path="res://new_resource.tres" type="Resource" id=2]
+[ext_resource path="res://addons/dialog_maker/scenes/custom_nodes/DialogPlayer.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 391.0
+margin_top = 212.0
+margin_right = 606.0
+margin_bottom = 340.0
+text = "chat"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" type="Node" parent="Button"]
+script = ExtResource( 1 )
+dialog = ExtResource( 2 )
+dialog_player = NodePath("../../CanvasLayer/DialogPlayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogPlayer" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+input_action = "test"
+[connection signal="pressed" from="Button" to="Button/Dialog" method="start_dialog"]

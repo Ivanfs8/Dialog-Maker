@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_maker/scripts/custom_nodes/dialog_player_node.gd" type="Script" id=1]
+
+[node name="DialogPlayer" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.517647 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 111.0
+margin_top = 46.0
+margin_right = -113.0
+margin_bottom = -44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 379.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+alignment = 1
+
+[node name="OptionsMenu" type="PopupMenu" parent="VBoxContainer/VBoxContainer"]
+margin_left = 368.0
+margin_top = 154.0
+margin_right = 431.0
+margin_bottom = 224.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+popup_exclusive = true
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false, "Item 1", null, 0, false, false, 1, 0, null, "", false, "Item 2", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="DialogContainer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 383.0
+margin_right = 800.0
+margin_bottom = 510.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DialogContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 793.0
+margin_bottom = 120.0
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/DialogContainer/VBoxContainer"]
+margin_right = 786.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Name"
+
+[node name="ContentLabel" type="RichTextLabel" parent="VBoxContainer/DialogContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 786.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IconRect" type="TextureRect" parent="VBoxContainer/DialogContainer/VBoxContainer"]
+margin_left = 786.0
+margin_top = 113.0
+margin_right = 786.0
+margin_bottom = 113.0
+focus_mode = 2
+size_flags_horizontal = 8
+stretch_mode = 6
+[connection signal="index_pressed" from="VBoxContainer/VBoxContainer/OptionsMenu" to="." method="_on_choice_button"]

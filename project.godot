@@ -17,12 +17,22 @@ _global_script_classes=[ {
 "base": "TreeNode",
 "class": "ChoiceNode",
 "language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/nodes/choice_node.gd"
+"path": "res://addons/dialog_maker/scripts/graph_nodes/choice_node.gd"
 }, {
 "base": "PanelContainer",
 "class": "ChoicePanel",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd"
+}, {
+"base": "Node",
+"class": "Dialog",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/custom_nodes/dialog_node.gd"
+}, {
+"base": "Control",
+"class": "DialogPlayer",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/custom_nodes/dialog_player_node.gd"
 }, {
 "base": "PanelContainer",
 "class": "DialoguePanel",
@@ -37,17 +47,17 @@ _global_script_classes=[ {
 "base": "TreeNode",
 "class": "SecuenceNode",
 "language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/nodes/secuence_node.gd"
+"path": "res://addons/dialog_maker/scripts/graph_nodes/secuence_node.gd"
 }, {
 "base": "TreeNode",
 "class": "StartNode",
 "language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/nodes/start_node.gd"
+"path": "res://addons/dialog_maker/scripts/graph_nodes/start_node.gd"
 }, {
 "base": "GraphNode",
 "class": "TreeNode",
 "language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/nodes/node_base.gd"
+"path": "res://addons/dialog_maker/scripts/graph_nodes/node_base.gd"
 }, {
 "base": "Resource",
 "class": "TreeRes",
@@ -58,6 +68,8 @@ _global_script_class_icons={
 "CharacterRes": "",
 "ChoiceNode": "",
 "ChoicePanel": "",
+"Dialog": "res://addons/dialog_maker/icons/DialogIcon.png",
+"DialogPlayer": "res://addons/dialog_maker/icons/DialogPlay.svg",
 "DialoguePanel": "",
 "ResFileFinder": "",
 "SecuenceNode": "",
@@ -71,6 +83,21 @@ _global_script_class_icons={
 config/name="Dialog Maker v2"
 run/main_scene="res://scenes/Node2D.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "dialog_maker" )
+
+[input]
+
+test={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 

@@ -1,6 +1,8 @@
 extends Resource
 class_name TreeRes
 
+func get_class() -> String: return "TreeRes"
+
 const DIALOGUE: Dictionary = {
 	"chara_id": 0,
 	"text": ""

@@ -2,9 +2,9 @@ tool
 extends GraphEdit
 
 #Nodes
-const StartNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/nodes/StartNode.tscn")
-const SecuenceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/nodes/SecuenceNode.tscn")
-const ChoiceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/nodes/ChoiceNode.tscn")
+const StartNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/StartNode.tscn")
+const SecuenceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/SecuenceNode.tscn")
+const ChoiceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/ChoiceNode.tscn")
 
 onready var popup_menu: PopupMenu = $PopupMenu
 var auto_connect: Dictionary = {}
@@ -72,7 +72,7 @@ func clear_all_nodes():
 	clear_connections()
 	for node in get_nodes():
 #		node = node as GraphNode
-		node.queue_free()
+		node.free()
 
 # removes connections going from an id
 func remove_connection(id, node):

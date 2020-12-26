@@ -3,11 +3,11 @@ extends PanelContainer
 
 const ForcePreload = {
 	"TreeRes": preload("res://addons/dialog_maker/scripts/tree_res.gd"),
-	"TreeNode": preload("res://addons/dialog_maker/scripts/nodes/node_base.gd"),
-	"StartNode": preload("res://addons/dialog_maker/scripts/nodes/start_node.gd"),
-	"SecuenceNode": preload("res://addons/dialog_maker/scripts/nodes/secuence_node.gd"),
-	"ChoiceNode": preload("res://addons/dialog_maker/scripts/nodes/choice_node.gd"),
-	"SecuenceEditor": preload("res://addons/dialog_maker/scripts/nodes/secuence_node.gd"),
+	"TreeNode": preload("res://addons/dialog_maker/scripts/graph_nodes/node_base.gd"),
+	"StartNode": preload("res://addons/dialog_maker/scripts/graph_nodes/start_node.gd"),
+	"SecuenceNode": preload("res://addons/dialog_maker/scripts/graph_nodes/secuence_node.gd"),
+	"ChoiceNode": preload("res://addons/dialog_maker/scripts/graph_nodes/choice_node.gd"),
+	"SecuenceEditor": preload("res://addons/dialog_maker/scripts/graph_nodes/secuence_node.gd"),
 	"DialoguePanel": preload("res://addons/dialog_maker/scripts/tree_editor/dialogue_panel.gd"),
 	"ChoiceEditor": preload("res://addons/dialog_maker/scripts/tree_editor/choice_editor.gd"),
 	"ChoicePanel": preload("res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd")

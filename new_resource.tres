@@ -10,32 +10,45 @@ characters = [ ExtResource( 2 ), ExtResource( 3 ) ]
 nodes_data = [ {
 "name": "StartNode",
 "next": 1,
-"offset": Vector2( 100, 120 ),
+"offset": Vector2( 191, 225 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
 }, {
 "name": "SecuenceNode",
-"next": 2,
-"offset": Vector2( 300, 40 ),
+"next": 3,
+"offset": Vector2( 380, 180 ),
 "secuence": [ {
 "chara_id": 0,
-"text": "fffffffff"
+"text": "hola"
 }, {
 "chara_id": 1,
-"text": "???????"
+"text": "holis"
+}, {
+"chara_id": 0,
+"text": "como vas?"
 } ],
-"size": Vector2( 137, 199 ),
+"size": Vector2( 137, 203 ),
 "type": "SecuenceNode"
 }, {
-"choices": [ "a", "b" ],
+"name": "SecuenceNode2",
+"next": -1,
+"offset": Vector2( 800, 60 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "great"
+} ],
+"size": Vector2( 137, 145 ),
+"type": "SecuenceNode"
+}, {
+"choices": [ "bien", "mal" ],
 "name": "ChoiceNode",
-"offset": Vector2( 540, 80 ),
-"paths": [ -1, -1 ],
+"offset": Vector2( 580, 180 ),
+"paths": [ 2, -1 ],
 "question": {
 "chara_id": 0,
-"text": ""
+"text": "como vas??"
 },
-"size": Vector2( 124, 205 ),
+"size": Vector2( 172, 219 ),
 "type": "ChoiceNode"
 } ]
 connections = [ {
@@ -48,39 +61,58 @@ connections = [ {
 "from_port": 0,
 "to": "ChoiceNode",
 "to_port": 0
+}, {
+"from": "ChoiceNode",
+"from_port": 0,
+"to": "SecuenceNode2",
+"to_port": 0
 } ]
 tree_data = {
 0: {
 "name": "StartNode",
 "next": 1,
-"offset": Vector2( 100, 120 ),
+"offset": Vector2( 191, 225 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
 },
 1: {
 "name": "SecuenceNode",
-"next": 2,
-"offset": Vector2( 300, 40 ),
+"next": 3,
+"offset": Vector2( 380, 180 ),
 "secuence": [ {
 "chara_id": 0,
-"text": "fffffffff"
+"text": "hola"
 }, {
 "chara_id": 1,
-"text": "???????"
+"text": "holis"
+}, {
+"chara_id": 0,
+"text": "como vas?"
 } ],
-"size": Vector2( 137, 199 ),
+"size": Vector2( 137, 203 ),
 "type": "SecuenceNode"
 },
 2: {
-"choices": [ "a", "b" ],
+"name": "SecuenceNode2",
+"next": -1,
+"offset": Vector2( 800, 60 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "great"
+} ],
+"size": Vector2( 137, 145 ),
+"type": "SecuenceNode"
+},
+3: {
+"choices": [ "bien", "mal" ],
 "name": "ChoiceNode",
-"offset": Vector2( 540, 80 ),
-"paths": [ -1, -1 ],
+"offset": Vector2( 580, 180 ),
+"paths": [ 2, -1 ],
 "question": {
 "chara_id": 0,
-"text": ""
+"text": "como vas??"
 },
-"size": Vector2( 124, 205 ),
+"size": Vector2( 172, 219 ),
 "type": "ChoiceNode"
 }
 }
