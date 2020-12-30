@@ -17,18 +17,9 @@ func set_current_node(node: SecuenceNode):
 	
 	load_secuence(node.secuence)
 
-func _exit_tree():
-	for dialog_panel in dialogues_cont.get_children():
-#		dialog_panel = dialog_panel as DialoguePanel
-		connect_dialog(dialog_panel, true)
-
-func connect_dialog(dialog_panel: DialoguePanel, disc: bool = false):
-	if !disc:
-		dialog_panel.delete_button.connect("pressed", self, "delete_dialogue", [dialog_panel])
-		dialog_panel.connect("dialogue_edited", self, "on_edit_dialogue", [dialog_panel])
-#	else:
-#		dialog_panel.delete_button.disconnect("pressed", self, "delete_dialogue")
-#		dialog_panel.disconnect("dialogue_edited", self, "on_edit_dialogue")
+func connect_dialog(dialog_panel: DialoguePanel):
+	dialog_panel.delete_button.connect("pressed", self, "delete_dialogue", [dialog_panel])
+	dialog_panel.connect("dialogue_edited", self, "on_edit_dialogue", [dialog_panel])
 
 func clear_secuence():
 	for panel in dialogues_cont.get_children():
@@ -99,6 +90,13 @@ func move_dialogue(dialog_panel: DialoguePanel, new_index: int):
 	current_node.secuence.insert(new_index, dialog)
 	
 	dialogues_cont.move_child(dialog_panel, new_index)
+	
+	var index: int
+	for panel in dialogues_cont.get_children():
+		panel.index = index
+		index += 1
+	
+	if dialog_panel.index != new_index: print("ERROR, wrong index")
 	
 	current_node.display_secuence()
 

@@ -10,8 +10,7 @@ onready var text_edit: TextEdit = $HBoxContainer/TextEdit
 onready var delete_button: Button = $HBoxContainer/DeleteButton
 
 func _exit_tree():
-#	choice_panel.delete_button.connect("pressed", self, "delete_choice", [choice_panel])
-#	choice_panel.connect("choice_edited", self, "on_edit_choice", [choice_panel])
+	if Engine.editor_hint: return
 	for sig in delete_button.get_signal_connection_list("pressed"):
 		delete_button.disconnect(sig["signal"], sig["target"], sig["method"])
 	

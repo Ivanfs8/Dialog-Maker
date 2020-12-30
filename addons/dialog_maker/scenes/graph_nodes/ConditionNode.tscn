@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://addons/dialog_maker/scripts/graph_nodes/node_condition.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialog_maker/themes_styles/node_frame.stylebox" type="StyleBox" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -14,9 +15,9 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.854902, 0.498039, 0.498039, 1 )
 
-[node name="SecuenceNode" type="GraphNode"]
+[node name="ConditionNode" type="GraphNode"]
 margin_right = 130.0
-margin_bottom = 60.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 110, 60 )
 custom_styles/frame = SubResource( 1 )
 custom_styles/selectedframe = ExtResource( 2 )
@@ -32,6 +33,13 @@ slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 1
 slot/0/right_color = Color( 1, 0.392157, 0.392157, 1 )
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,3 +52,15 @@ margin_bottom = 44.0
 rect_min_size = Vector2( 0, 10 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="PreviewLabel" type="Label" parent="."]
+margin_left = 28.0
+margin_top = 45.0
+margin_right = 102.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

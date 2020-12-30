@@ -8,6 +8,7 @@ onready var type_option: OptionButton = $HBoxContainer/PropertyType
 onready var delete_button: Button = $HBoxContainer/DeleteButton
 
 func _exit_tree():
+	if Engine.editor_hint: return
 	for sig in get_signal_connection_list("edited_property"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 	for sig in delete_button.get_signal_connection_list("pressed"):

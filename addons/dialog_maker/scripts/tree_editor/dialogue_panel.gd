@@ -11,6 +11,7 @@ onready var character_option: OptionButton = $VBoxContainer/OptionsPanelContaine
 onready var delete_button: Button = $VBoxContainer/OptionsPanelContainer/HBoxContainer/DeleteButton
 
 func _exit_tree():
+	if Engine.editor_hint: return
 	for sig in delete_button.get_signal_connection_list("pressed"):
 		delete_button.disconnect(sig["signal"], sig["target"], sig["method"])
 	

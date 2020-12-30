@@ -33,7 +33,7 @@ valign = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 visible = false
-margin_right = 1024.0
+margin_right = 1116.0
 margin_bottom = 600.0
 
 [node name="SettingsTabContainer" type="TabContainer" parent="HSplitContainer"]
@@ -108,21 +108,20 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="TreeVBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
-margin_left = 262.0
-margin_right = 1024.0
+margin_right = 1116.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/TreeVBoxContainer"]
-margin_right = 762.0
+margin_right = 1116.0
 margin_bottom = 34.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/TreeVBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 755.0
+margin_right = 1109.0
 margin_bottom = 27.0
 
 [node name="SettingsButton" type="Button" parent="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer"]
@@ -150,13 +149,13 @@ text = "Choice"
 
 [node name="TreeGraphEdit" type="GraphEdit" parent="HSplitContainer/TreeVBoxContainer"]
 margin_top = 38.0
-margin_right = 762.0
+margin_right = 1116.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 500, 500 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 right_disconnects = true
-scroll_offset = Vector2( -315, -56 )
+scroll_offset = Vector2( -500, -56 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -168,8 +167,9 @@ margin_bottom = 52.0
 items = [ "Secuence", null, 0, false, false, 0, 0, null, "", false, "Choice", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer"]
-margin_left = 1024.0
-margin_right = 1024.0
+visible = false
+margin_left = 512.0
+margin_right = 1116.0
 margin_bottom = 600.0
 
 [node name="SecuenceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 3 )]
@@ -178,6 +178,8 @@ margin_bottom = 600.0
 
 [node name="ChoiceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 4 )]
 visible = false
+margin_left = 304.0
+margin_right = 604.0
 margin_bottom = 600.0
 [connection signal="pressed" from="HSplitContainer/SettingsTabContainer/Properties/AddPropertyButton" to="HSplitContainer/SettingsTabContainer/Properties" method="add_property"]
 [connection signal="toggled" from="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_toggled"]

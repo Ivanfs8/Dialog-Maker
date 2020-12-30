@@ -105,6 +105,13 @@ func move_choice(choice_panel: ChoicePanel, new_index: int):
 	
 	choices_cont.move_child(choice_panel, new_index)
 	
+	var index: int
+	for panel in choices_cont.get_children():
+		panel.index = index
+		index += 1
+	
+	if choice_panel.index != new_index: print("ERROR, wrong index")
+	
 	current_node.display_choices()
 
 func on_edit_choice(choice_panel: ChoicePanel):

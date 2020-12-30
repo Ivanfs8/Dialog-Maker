@@ -5,8 +5,7 @@ class_name TreeNode
 func get_class(): return "TreeNode"
 
 func _exit_tree():
-#	for sig in get_signal_connection_list("raise_request"):
-#		disconnect(sig["signal"], sig["target"], sig["method"])
+	if Engine.editor_hint: return
 	for sig in get_signal_connection_list("resize_request"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 	for sig in get_signal_connection_list("close_request"):

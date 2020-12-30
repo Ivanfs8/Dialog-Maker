@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd"
 }, {
+"base": "TreeNode",
+"class": "ConditionNode",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/graph_nodes/node_condition.gd"
+}, {
+"base": "PanelContainer",
+"class": "ConditionPanel",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/tree_editor/condition_panel.gd"
+}, {
 "base": "Node",
 "class": "Dialog",
 "language": "GDScript",
@@ -73,6 +83,8 @@ _global_script_class_icons={
 "CharacterRes": "",
 "ChoiceNode": "",
 "ChoicePanel": "",
+"ConditionNode": "",
+"ConditionPanel": "",
 "Dialog": "res://addons/dialog_maker/icons/DialogIcon.png",
 "DialogPlayer": "res://addons/dialog_maker/icons/DialogPlay.svg",
 "DialoguePanel": "",

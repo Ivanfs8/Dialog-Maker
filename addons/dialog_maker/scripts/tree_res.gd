@@ -8,6 +8,15 @@ const DIALOGUE: Dictionary = {
 	"text": ""
 }
 
+const CONDITION: Dictionary = {
+	"name": "", 
+	"type": 0,
+	"comparator": 0,
+	"value": ""
+	}
+
+enum COMP {EQUAL, NOT, LESS, MORE, LESS_OR_EQUAL, MORE_OR_EQUAL}
+
 export (Array, Resource) var characters: Array = []
 
 export var nodes_data: Array = [] #type, name, offset, size

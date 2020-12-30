@@ -35,6 +35,7 @@ func set_tree_resource(tree: TreeRes):
 	display_characters = all_characters.duplicate()
 
 func _exit_tree():
+	if Engine.editor_hint: return
 	for sig in get_signal_connection_list("character_changed"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
