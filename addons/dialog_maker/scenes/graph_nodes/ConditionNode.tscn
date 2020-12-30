@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://addons/dialog_maker/scripts/graph_nodes/secuence_node.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialog_maker/themes_styles/node_frame.stylebox" type="StyleBox" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -13,33 +12,26 @@ border_width_left = 1
 border_width_top = 24
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.14902, 0.501961, 0.74902, 0.901961 )
+border_color = Color( 0.854902, 0.498039, 0.498039, 1 )
 
 [node name="SecuenceNode" type="GraphNode"]
-margin_right = 156.0
-margin_bottom = 150.0
+margin_right = 130.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 110, 60 )
 custom_styles/frame = SubResource( 1 )
 custom_styles/selectedframe = ExtResource( 2 )
 custom_colors/close_color = Color( 0, 0, 0, 1 )
 custom_colors/title_color = Color( 0, 0, 0, 1 )
 custom_colors/resizer_color = Color( 1, 1, 1, 1 )
-title = "Secuence"
+title = "Condition"
 show_close = true
 resizable = true
-slot/0/left_enabled = true
+slot/0/left_enabled = false
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
-slot/0/right_type = 0
-slot/0/right_color = Color( 1, 1, 1, 1 )
-slot/1/left_enabled = true
-slot/1/left_type = 1
-slot/1/left_color = Color( 1, 0.392157, 0.392157, 1 )
-slot/1/right_enabled = false
-slot/1/right_type = 0
-slot/1/right_color = Color( 1, 1, 1, 1 )
-script = ExtResource( 1 )
+slot/0/right_type = 1
+slot/0/right_color = Color( 1, 0.392157, 0.392157, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,22 +39,8 @@ __meta__ = {
 [node name="Control" type="Control" parent="."]
 margin_left = 28.0
 margin_top = 34.0
-margin_right = 128.0
+margin_right = 102.0
 margin_bottom = 44.0
 rect_min_size = Vector2( 0, 10 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 28.0
-margin_top = 45.0
-margin_right = 128.0
-margin_bottom = 145.0
-rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PreviewContainer" type="VBoxContainer" parent="ScrollContainer"]

@@ -32,6 +32,7 @@ func set_tree_resource(tree: TreeRes):
 	secuence_editor.characters = tree_resource.characters
 	choice_editor.characters = tree_resource.characters
 	
+	properties_tab.set_tree_resource(tree_resource)
 	character_tab.set_tree_resource(tree_resource)
 	
 	$Label.hide()
@@ -43,6 +44,7 @@ onready var choice_editor = $HSplitContainer/HBoxContainer/ChoiceEditor
 
 onready var settings_tabs: TabContainer = $HSplitContainer/SettingsTabContainer
 onready var character_tab: VBoxContainer = $HSplitContainer/SettingsTabContainer/Characters
+onready var properties_tab: VBoxContainer = $HSplitContainer/SettingsTabContainer/Properties
 
 func _ready():
 	invalid_tree_resource()

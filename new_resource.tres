@@ -8,15 +8,30 @@
 script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 3 ) ]
 nodes_data = [ {
-"name": "StartNode",
-"next": 1,
-"offset": Vector2( 191, 225 ),
-"size": Vector2( 97, 72 ),
-"type": "StartNode"
+"name": "SecuenceNode2",
+"next": -1,
+"offset": Vector2( 800, 60 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "great"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"choices": [ "bien", "mal" ],
+"name": "ChoiceNode",
+"offset": Vector2( 580, 180 ),
+"paths": [ 0, -1 ],
+"question": {
+"chara_id": 0,
+"text": "como vas??"
+},
+"size": Vector2( 172, 219 ),
+"type": "ChoiceNode"
 }, {
 "name": "SecuenceNode",
-"next": 3,
-"offset": Vector2( 380, 180 ),
+"next": 1,
+"offset": Vector2( 240, 160 ),
 "secuence": [ {
 "chara_id": 0,
 "text": "hola"
@@ -27,29 +42,14 @@ nodes_data = [ {
 "chara_id": 0,
 "text": "como vas?"
 } ],
-"size": Vector2( 137, 203 ),
+"size": Vector2( 199, 157 ),
 "type": "SecuenceNode"
 }, {
-"name": "SecuenceNode2",
-"next": -1,
-"offset": Vector2( 800, 60 ),
-"secuence": [ {
-"chara_id": 0,
-"text": "great"
-} ],
-"size": Vector2( 137, 145 ),
-"type": "SecuenceNode"
-}, {
-"choices": [ "bien", "mal" ],
-"name": "ChoiceNode",
-"offset": Vector2( 580, 180 ),
-"paths": [ 2, -1 ],
-"question": {
-"chara_id": 0,
-"text": "como vas??"
-},
-"size": Vector2( 172, 219 ),
-"type": "ChoiceNode"
+"name": "StartNode",
+"next": 2,
+"offset": Vector2( 20, 160 ),
+"size": Vector2( 97, 72 ),
+"type": "StartNode"
 } ]
 connections = [ {
 "from": "StartNode",
@@ -69,16 +69,32 @@ connections = [ {
 } ]
 tree_data = {
 0: {
-"name": "StartNode",
-"next": 1,
-"offset": Vector2( 191, 225 ),
-"size": Vector2( 97, 72 ),
-"type": "StartNode"
+"name": "SecuenceNode2",
+"next": -1,
+"offset": Vector2( 800, 60 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "great"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
 },
 1: {
+"choices": [ "bien", "mal" ],
+"name": "ChoiceNode",
+"offset": Vector2( 580, 180 ),
+"paths": [ 0, -1 ],
+"question": {
+"chara_id": 0,
+"text": "como vas??"
+},
+"size": Vector2( 172, 219 ),
+"type": "ChoiceNode"
+},
+2: {
 "name": "SecuenceNode",
-"next": 3,
-"offset": Vector2( 380, 180 ),
+"next": 1,
+"offset": Vector2( 240, 160 ),
 "secuence": [ {
 "chara_id": 0,
 "text": "hola"
@@ -89,30 +105,17 @@ tree_data = {
 "chara_id": 0,
 "text": "como vas?"
 } ],
-"size": Vector2( 137, 203 ),
-"type": "SecuenceNode"
-},
-2: {
-"name": "SecuenceNode2",
-"next": -1,
-"offset": Vector2( 800, 60 ),
-"secuence": [ {
-"chara_id": 0,
-"text": "great"
-} ],
-"size": Vector2( 137, 145 ),
+"size": Vector2( 199, 157 ),
 "type": "SecuenceNode"
 },
 3: {
-"choices": [ "bien", "mal" ],
-"name": "ChoiceNode",
-"offset": Vector2( 580, 180 ),
-"paths": [ 2, -1 ],
-"question": {
-"chara_id": 0,
-"text": "como vas??"
-},
-"size": Vector2( 172, 219 ),
-"type": "ChoiceNode"
+"name": "StartNode",
+"next": 2,
+"offset": Vector2( 20, 160 ),
+"size": Vector2( 97, 72 ),
+"type": "StartNode"
 }
+}
+properties = {
+"vitality": 2
 }

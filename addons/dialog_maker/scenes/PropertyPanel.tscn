@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/dialog_maker/icons/DeleteIcon.svg" type="Texture" id=1]
+[ext_resource path="res://addons/dialog_maker/scripts/tree_editor/property_panel.gd" type="Script" id=2]
+
+[node name="PropertyPanel" type="PanelContainer"]
+margin_right = 242.0
+margin_bottom = 38.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 235.0
+margin_bottom = 31.0
+
+[node name="PropertyName" type="LineEdit" parent="HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Name"
+caret_blink = true
+
+[node name="PropertyType" type="OptionButton" parent="HBoxContainer"]
+margin_left = 132.0
+margin_right = 196.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Bool"
+items = [ "Bool", null, false, 0, null, "Int", null, false, 1, null, "Float", null, false, 2, null, "String", null, false, 3, null ]
+selected = 0
+
+[node name="DeleteButton" type="Button" parent="HBoxContainer"]
+margin_left = 200.0
+margin_right = 228.0
+margin_bottom = 24.0
+icon = ExtResource( 1 )
+[connection signal="text_changed" from="HBoxContainer/PropertyName" to="." method="_on_PropertyName_text_changed"]
+[connection signal="item_selected" from="HBoxContainer/PropertyType" to="." method="_on_PropertyType_item_selected"]

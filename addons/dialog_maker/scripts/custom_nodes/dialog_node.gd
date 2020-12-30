@@ -9,6 +9,9 @@ export (Resource) var dialog: Resource = dialog as TreeRes
 
 export (NodePath) onready var dialog_player = get_node(dialog_player)
 
+export (Array, String) var autoload_properties_fetch: PoolStringArray
+export (Array, NodePath) var scene_properties_fetch: PoolStringArray
+
 var index: int = -1
 var sec_index: int = 0
 

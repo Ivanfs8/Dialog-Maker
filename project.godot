@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "TreeRes",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/tree_res.gd"
+}, {
+"base": "Node",
+"class": "auto_test",
+"language": "GDScript",
+"path": "res://autoloadtest.gd"
 } ]
 _global_script_class_icons={
 "CharacterRes": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "SecuenceNode": "",
 "StartNode": "",
 "TreeNode": "",
-"TreeRes": ""
+"TreeRes": "",
+"auto_test": ""
 }
 
 [application]
@@ -84,9 +90,9 @@ config/name="Dialog Maker v2"
 run/main_scene="res://scenes/Node2D.tscn"
 config/icon="res://icon.png"
 
-[editor_plugins]
+[autoload]
 
-enabled=PoolStringArray( "dialog_maker" )
+AutoloadTest="*res://autoloadtest.gd"
 
 [input]
 
