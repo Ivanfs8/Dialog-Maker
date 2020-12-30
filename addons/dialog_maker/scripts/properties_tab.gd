@@ -3,6 +3,8 @@ extends Control
 
 const PropertyPanelScene: PackedScene = preload("res://addons/dialog_maker/scenes/PropertyPanel.tscn")
 
+signal property_changed
+
 onready var properties_cont: VBoxContainer = $PropertiesContainer
 
 var tree_res: TreeRes
@@ -21,12 +23,16 @@ func add_property(_name: String = "", type: int = TYPE_BOOL):
 	
 	property_panel.delete_button.connect("pressed", self, "delete_property", [property_panel])
 	property_panel.connect("edited_property", self, "on_edit_property")
+	
+	emit_signal("property_changed", true, tree_res.properties)
 
 func delete_property(panel: Control):
 	if !tree_res: return
 	var key: String = panel.name_edit.text
 	tree_res.properties.erase(key)
 	panel.queue_free()
+	
+	emit_signal("property_changed", false, tree_res.properties)
 
 func on_edit_property(_name: String, type: int):
 	if _name == "" || _name == null: return
@@ -35,3 +41,5 @@ func on_edit_property(_name: String, type: int):
 		for panel in properties_cont.get_children():
 			var prop: Dictionary = panel.get_property()
 			tree_res.properties[prop["name"]] = prop["type"]
+	
+	emit_signal("property_changed", true, tree_res.properties)

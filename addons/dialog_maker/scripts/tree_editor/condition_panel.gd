@@ -6,7 +6,7 @@ signal condition_edited
 
 var index: int
 
-var properties: Array
+var properties: Dictionary
 
 onready var prop_option: OptionButton = $HBoxContainer/PropertyOptionButton
 onready var comp_option: OptionButton = $HBoxContainer/ComparatorOptionButton
@@ -21,16 +21,20 @@ func _exit_tree():
 	for sig in get_signal_connection_list("condition_edited"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
-func load_condition(props: Array, cond: Dictionary) -> void:
+func load_condition(props: Dictionary, cond: Dictionary) -> void:
 	properties = props
+	
 	prop_option.clear()
 	for prop in properties:
-		prop_option.add_item(prop["name"])
+		prop_option.add_item(prop)
 	
 	var id: int = 0
-	for item in prop_option.items:
-		if item.text == cond["name"]: break
-		id += 1
+	for ind in properties.size():
+		print(str("prop_ind: ", ind))
+		if prop_option.get_item_text(ind) == cond["name"]:
+			id = ind
+			break
+	
 	prop_option.select(id)
 	
 	comp_option.select(cond["comparator"])
@@ -40,8 +44,8 @@ func load_condition(props: Array, cond: Dictionary) -> void:
 #name, type, comparator, value
 func get_condition() -> Dictionary:
 	var cond: Dictionary = {
-		"name": properties[prop_option.selected]["name"], 
-		"type": properties[prop_option.selected]["type"],
+		"name": prop_option.get_item_text(prop_option.selected), 
+		"type": properties[prop_option.get_item_text(prop_option.selected)],
 		"comparator": comp_option.selected,
 		"value": value_edit.text
 	}
@@ -51,12 +55,12 @@ func get_condition() -> Dictionary:
 func on_edit(_option_id: int = -1):
 	emit_signal("condition_edited")
 
-func on_change_properties(active: bool, _properties: Array):
+func on_change_properties(active: bool, _properties: Dictionary):
 	var select: int = prop_option.selected
 	
 	prop_option.clear()
 	for prop in _properties:
-		prop_option.add_item(prop["name"])
+		prop_option.add_item(prop)
 	
 	if active:
 		prop_option.select(select)

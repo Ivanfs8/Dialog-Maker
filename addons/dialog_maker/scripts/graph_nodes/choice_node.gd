@@ -41,6 +41,6 @@ func display_choices(only_question: bool = false):
 		
 		new_label.text = choice
 		add_child(new_label)
-		set_slot(i, false, 0, Color.white, true, 0, Color.white)
+		set_slot(i, true, 1, Color(1, 0.392157, 0.392157), true, 0, Color.white)
 		
 		i+=1

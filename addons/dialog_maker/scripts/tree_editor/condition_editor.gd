@@ -3,7 +3,7 @@ extends PanelContainer
 
 const ConditionalPanelScene: PackedScene = preload("res://addons/dialog_maker/scenes/ConditionPanel.tscn")
 
-var properties: Array
+var properties: Dictionary
 
 onready var conditional_cont: VBoxContainer = $VBoxContainer/ScrollContainer/ConditionsVBoxContainer
 
@@ -103,7 +103,7 @@ func on_edit_condition(cond_panel: ConditionPanel):
 	
 	current_node.display_condition()
 	
-func on_properties_change(active: bool, _properties: Array):
+func on_properties_change(active: bool, _properties: Dictionary):
 	properties = _properties
 	for panel in conditional_cont.get_children():
 		panel = panel as ConditionPanel

@@ -4,7 +4,7 @@ class_name ConditionNode
 
 func get_class() -> String: return "ConditionNode"
 
-var conditions: Array = [] #name, type, comparator, value
+var conditions: Array #name, type, comparator, value
 
 func get_save_data() -> Dictionary:
 	var data: Dictionary = .get_save_data()

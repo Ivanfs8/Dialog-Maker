@@ -10,7 +10,9 @@ const ForcePreload = {
 	"SecuenceEditor": preload("res://addons/dialog_maker/scripts/graph_nodes/secuence_node.gd"),
 	"DialoguePanel": preload("res://addons/dialog_maker/scripts/tree_editor/dialogue_panel.gd"),
 	"ChoiceEditor": preload("res://addons/dialog_maker/scripts/tree_editor/choice_editor.gd"),
-	"ChoicePanel": preload("res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd")
+	"ChoicePanel": preload("res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd"),
+	"ConditionEditor": preload("res://addons/dialog_maker/scripts/tree_editor/condition_editor.gd"),
+	"ConditionPanel": preload("res://addons/dialog_maker/scripts/tree_editor/condition_panel.gd")
 }
 
 var undo_redo: UndoRedo
@@ -31,6 +33,7 @@ func set_tree_resource(tree: TreeRes):
 	
 	secuence_editor.characters = tree_resource.characters
 	choice_editor.characters = tree_resource.characters
+	condition_editor.properties = tree_resource.properties
 	
 	properties_tab.set_tree_resource(tree_resource)
 	character_tab.set_tree_resource(tree_resource)
@@ -41,6 +44,7 @@ func set_tree_resource(tree: TreeRes):
 onready var tree_graph: GraphEdit = $HSplitContainer/TreeVBoxContainer/TreeGraphEdit
 onready var secuence_editor = $HSplitContainer/HBoxContainer/SecuenceEditor
 onready var choice_editor = $HSplitContainer/HBoxContainer/ChoiceEditor
+onready var condition_editor = $HSplitContainer/HBoxContainer/ConditionEditor
 
 onready var settings_tabs: TabContainer = $HSplitContainer/SettingsTabContainer
 onready var character_tab: VBoxContainer = $HSplitContainer/SettingsTabContainer/Characters
@@ -55,6 +59,7 @@ func _ready():
 	
 	character_tab.connect("character_changed", secuence_editor, "on_characters_change")
 	character_tab.connect("character_changed", choice_editor, "on_characters_change")
+	properties_tab.connect("property_changed", condition_editor, "on_properties_change")
 
 func invalid_tree_resource(text: String = "Please select a dialogue resource"):
 	$Label.text = text
@@ -67,6 +72,8 @@ func save_resource():
 			secuence_editor.current_node.display_secuence()
 		if choice_editor.current_node != null:
 			choice_editor.current_node.display_choices()
+		if condition_editor.current_node != null:
+			condition_editor.current_node.display_condition()
 		
 		tree_graph.save_resource(tree_resource)
 		
@@ -85,8 +92,11 @@ func _on_TreeGraphEdit_node_selected(node: TreeNode):
 	secuence_editor.current_node = null
 	choice_editor.hide()
 	choice_editor.current_node = null
+	condition_editor.hide()
+	condition_editor.current_node = null
 	
 #	character_tab.characters = tree_resource.characters
+	print(node.get_class())
 	match node.get_class():
 		"SecuenceNode": 
 			secuence_editor.characters = tree_resource.characters
@@ -96,6 +106,10 @@ func _on_TreeGraphEdit_node_selected(node: TreeNode):
 			choice_editor.characters = tree_resource.characters
 			choice_editor.set_current_node(node)
 			choice_editor.show()
+		"ConditionNode":
+			condition_editor.properties = tree_resource.properties
+			condition_editor.set_current_node(node)
+			condition_editor.show()
 
 class TreeData:
 	var nodes_data: Array
@@ -156,6 +170,8 @@ func _on_SettingsButton_toggled(button_pressed):
 		secuence_editor.current_node = null
 		choice_editor.hide()
 		choice_editor.current_node = null
+		condition_editor.hide()
+		condition_editor.current_node = null
 		
 		settings_tabs.show()
 	else:

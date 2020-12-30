@@ -50,6 +50,17 @@ nodes_data = [ {
 "offset": Vector2( 20, 160 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
+}, {
+"conditions": [ {
+"comparator": 5,
+"name": "vitality",
+"type": 2,
+"value": "10"
+} ],
+"name": "ConditionNode",
+"offset": Vector2( 180, 380 ),
+"size": Vector2( 199, 86 ),
+"type": "ConditionNode"
 } ]
 connections = [ {
 "from": "StartNode",
@@ -66,6 +77,11 @@ connections = [ {
 "from_port": 0,
 "to": "SecuenceNode2",
 "to_port": 0
+}, {
+"from": "ConditionNode",
+"from_port": 0,
+"to": "ChoiceNode",
+"to_port": 1
 } ]
 tree_data = {
 0: {
@@ -114,6 +130,18 @@ tree_data = {
 "offset": Vector2( 20, 160 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
+},
+4: {
+"conditions": [ {
+"comparator": 5,
+"name": "vitality",
+"type": 2,
+"value": "10"
+} ],
+"name": "ConditionNode",
+"offset": Vector2( 180, 380 ),
+"size": Vector2( 199, 86 ),
+"type": "ConditionNode"
 }
 }
 properties = {

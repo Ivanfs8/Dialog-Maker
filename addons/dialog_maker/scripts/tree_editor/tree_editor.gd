@@ -5,6 +5,7 @@ extends GraphEdit
 const StartNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/StartNode.tscn")
 const SecuenceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/SecuenceNode.tscn")
 const ChoiceNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/ChoiceNode.tscn")
+const ConditionNodeScene: PackedScene = preload("res://addons/dialog_maker/scenes/graph_nodes/ConditionNode.tscn")
 
 onready var popup_menu: PopupMenu = $PopupMenu
 var auto_connect: Dictionary = {}
@@ -16,6 +17,10 @@ var auto_connect: Dictionary = {}
 #func _graph_node_raised(node: Node):
 #	set_selected(node)
 #	selected_node = node
+
+func _ready():
+	remove_valid_connection_type(0,1)
+	remove_valid_connection_type(1,0)
 
 func get_nodes() -> Array:
 	var nodes: Array = []
@@ -58,6 +63,7 @@ func add_node(type: String, pos: Vector2 = rect_size * 0.5 + scroll_offset):
 		"Start", "StartNode": new_node = StartNodeScene.instance()
 		"Secuence", "SecuenceNode": new_node = SecuenceNodeScene.instance()
 		"Choice", "ChoiceNode": new_node = ChoiceNodeScene.instance()
+		"Condition", "ConditionNode": new_node = ConditionNodeScene.instance()
 	
 	if new_node != null:
 		add_child(new_node)
@@ -117,8 +123,9 @@ func _on_PopupMenu_id_pressed(id: int):
 	match id:
 		0: new_node = add_node("Secuence", get_local_mouse_position() + scroll_offset)
 		1: new_node = add_node("Choice", get_local_mouse_position() + scroll_offset)
+		2: new_node = add_node("Condition", get_local_mouse_position() + scroll_offset)
 	
-	if !auto_connect.empty():
+	if !auto_connect.empty() && id != 2:
 		connect_node(auto_connect["from"], auto_connect["from_slot"], new_node.name, 0)
 		auto_connect = {}
 
