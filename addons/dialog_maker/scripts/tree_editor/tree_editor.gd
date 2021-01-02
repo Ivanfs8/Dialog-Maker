@@ -35,8 +35,10 @@ func connect_graph_node(node: GraphNode):
 
 func save_resource(res: TreeRes):
 	res.nodes_data.clear()
+	res.nodes_data.append(get_node("StartNode").get_save_data())
 	for node in get_nodes():
 		node = node as TreeNode
+		if node.name == "StartNode": continue
 		res.nodes_data.append(node.get_save_data())
 	
 	res.connections.clear()

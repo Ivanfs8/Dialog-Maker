@@ -8,6 +8,12 @@
 script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 3 ) ]
 nodes_data = [ {
+"name": "StartNode",
+"next": 2,
+"offset": Vector2( 20, 160 ),
+"size": Vector2( 97, 72 ),
+"type": "StartNode"
+}, {
 "name": "SecuenceNode2",
 "next": -1,
 "offset": Vector2( 800, 60 ),
@@ -18,19 +24,8 @@ nodes_data = [ {
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
 }, {
-"choices": [ "bien", "mal" ],
-"name": "ChoiceNode",
-"offset": Vector2( 580, 180 ),
-"paths": [ 0, -1 ],
-"question": {
-"chara_id": 0,
-"text": "como vas??"
-},
-"size": Vector2( 172, 219 ),
-"type": "ChoiceNode"
-}, {
 "name": "SecuenceNode",
-"next": 1,
+"next": 3,
 "offset": Vector2( 240, 160 ),
 "secuence": [ {
 "chara_id": 0,
@@ -45,12 +40,25 @@ nodes_data = [ {
 "size": Vector2( 199, 157 ),
 "type": "SecuenceNode"
 }, {
-"name": "StartNode",
-"next": 2,
-"offset": Vector2( 20, 160 ),
-"size": Vector2( 97, 72 ),
-"type": "StartNode"
+"choices": [ "bien", "mal" ],
+"conditions": [ {
+"id": 4,
+"port": 1
+} ],
+"name": "ChoiceNode",
+"offset": Vector2( 580, 180 ),
+"paths": [ 1, -1 ],
+"question": {
+"chara_id": 0,
+"text": "como vas??"
+},
+"size": Vector2( 172, 219 ),
+"type": "ChoiceNode"
 }, {
+"affects": [ {
+"id": 3,
+"port": 1
+} ],
 "conditions": [ {
 "comparator": 5,
 "name": "vitality",
@@ -85,6 +93,13 @@ connections = [ {
 } ]
 tree_data = {
 0: {
+"name": "StartNode",
+"next": 2,
+"offset": Vector2( 20, 160 ),
+"size": Vector2( 97, 72 ),
+"type": "StartNode"
+},
+1: {
 "name": "SecuenceNode2",
 "next": -1,
 "offset": Vector2( 800, 60 ),
@@ -95,21 +110,9 @@ tree_data = {
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
 },
-1: {
-"choices": [ "bien", "mal" ],
-"name": "ChoiceNode",
-"offset": Vector2( 580, 180 ),
-"paths": [ 0, -1 ],
-"question": {
-"chara_id": 0,
-"text": "como vas??"
-},
-"size": Vector2( 172, 219 ),
-"type": "ChoiceNode"
-},
 2: {
 "name": "SecuenceNode",
-"next": 1,
+"next": 3,
 "offset": Vector2( 240, 160 ),
 "secuence": [ {
 "chara_id": 0,
@@ -125,13 +128,26 @@ tree_data = {
 "type": "SecuenceNode"
 },
 3: {
-"name": "StartNode",
-"next": 2,
-"offset": Vector2( 20, 160 ),
-"size": Vector2( 97, 72 ),
-"type": "StartNode"
+"choices": [ "bien", "mal" ],
+"conditions": [ {
+"id": 4,
+"port": 1
+} ],
+"name": "ChoiceNode",
+"offset": Vector2( 580, 180 ),
+"paths": [ 1, -1 ],
+"question": {
+"chara_id": 0,
+"text": "como vas??"
+},
+"size": Vector2( 172, 219 ),
+"type": "ChoiceNode"
 },
 4: {
+"affects": [ {
+"id": 3,
+"port": 1
+} ],
 "conditions": [ {
 "comparator": 5,
 "name": "vitality",

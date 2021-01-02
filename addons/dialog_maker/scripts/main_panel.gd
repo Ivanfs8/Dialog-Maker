@@ -121,17 +121,32 @@ class TreeData:
 		connections = tree.connections
 	
 	func make_tree_data() -> Dictionary:
-		if nodes_data.empty():
-			return {}
+		if nodes_data.empty(): return {}
+		
+		var queue_conditions: Array = []
 		
 		var index: int = 0
 		for node in nodes_data:
 			match node["type"]:
 				"SecuenceNode", "StartNode": node["next"] = get_next(node["name"])
 				"ChoiceNode": node["paths"] = get_paths(node)
+				"ConditionNode": 
+					node["affects"] = get_affects(node)
+					node["index"] = index
+					queue_conditions.append(node)
 			
 			tree_data[index] = node
 			index += 1
+		
+		for cond_node in queue_conditions:
+			for data in cond_node["affects"]:
+				tree_data[data["id"]]["conditions"] = []
+			for data in cond_node["affects"]:
+				tree_data[data["id"]]["conditions"].append({
+					"id": cond_node["index"],
+					"port": data["port"]
+				})
+			cond_node.erase("index")
 		
 		return tree_data
 
@@ -154,7 +169,19 @@ class TreeData:
 	#		i += 1
 		
 		return paths
-
+	
+	func get_affects(node: Dictionary) -> Array:
+		var affects: Array
+		
+		for c in connections:
+			if c["from"] == node["name"]:
+				affects.append({
+					"id": get_index_of_node(c["to"]),
+					"port": c["to_port"]
+				})
+		
+		return affects
+	
 	func get_index_of_node(name: String) -> int:
 		var index : int = 0
 		for node in nodes_data:

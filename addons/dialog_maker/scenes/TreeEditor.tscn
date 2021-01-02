@@ -179,14 +179,17 @@ margin_right = 1116.0
 margin_bottom = 600.0
 
 [node name="SecuenceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 3 )]
+visible = false
 margin_bottom = 600.0
 
 [node name="ChoiceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 4 )]
+visible = false
 margin_left = 304.0
 margin_right = 604.0
 margin_bottom = 600.0
 
 [node name="ConditionEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 7 )]
+visible = false
 [connection signal="pressed" from="HSplitContainer/SettingsTabContainer/Properties/AddPropertyButton" to="HSplitContainer/SettingsTabContainer/Properties" method="add_property"]
 [connection signal="toggled" from="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_toggled"]
 [connection signal="pressed" from="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer/SecuenceButton" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="add_node" flags=3 binds= [ "Secuence" ]]
