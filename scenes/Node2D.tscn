@@ -22,6 +22,7 @@ __meta__ = {
 script = ExtResource( 1 )
 dialog = ExtResource( 2 )
 dialog_player = NodePath("../../CanvasLayer/DialogPlayer")
+autoload_properties_fetch = [ "AutoloadTest" ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

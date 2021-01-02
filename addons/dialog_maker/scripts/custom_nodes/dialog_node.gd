@@ -7,7 +7,7 @@ signal dialog_next(_dialog)
 
 export (Resource) var dialog: Resource = dialog as TreeRes
 
-export (NodePath) onready var dialog_player = get_node(dialog_player)
+export (NodePath) onready var dialog_player = get_node(dialog_player) as DialogPlayer
 
 export (Array, String) var autoload_properties_fetch: PoolStringArray
 export (Array, NodePath) var scene_properties_fetch: PoolStringArray
@@ -15,8 +15,45 @@ export (Array, NodePath) var scene_properties_fetch: PoolStringArray
 var index: int = -1
 var sec_index: int = 0
 
+#properties["name"].value
+var properties: Dictionary = {}
+
+class Prop:
+	var _name: String
+	var node: Node
+	var path: String
+	var value setget , get_value
+	func get_value():
+		return node.get_indexed(path)
+	
+	func _init(__name: String, _node: Node, _path: String):
+		_name = __name
+		node = _node
+		path = _path
+
 func _ready():
 	if dialog_player: connect("dialog_started", dialog_player, "_on_Dialog_dialog_started")
+	
+	if dialog.properties.empty(): return
+	
+	for prop in dialog.properties:
+		var found: bool = false
+		for node_name in autoload_properties_fetch:
+			var node: Node = get_node("/root/" + node_name)
+			if node && node.get_indexed(":" + prop) != null:
+				properties[prop] = Prop.new(prop, node, ":" + prop)
+				found = true
+				print("Found ", prop, " in ", node.name)
+				break
+		
+		if found: continue
+		else: for node_path in scene_properties_fetch:
+			var node: Node = get_node(node_path)
+			if node && node.get_indexed(":" + prop) != null:
+				properties[prop] = Prop.new(prop, node, ":" + prop)
+				found = true
+				print("Found ", prop, " in ", node.name)
+				break
 
 func start_dialog():
 	index = dialog.tree_data[0]["next"]

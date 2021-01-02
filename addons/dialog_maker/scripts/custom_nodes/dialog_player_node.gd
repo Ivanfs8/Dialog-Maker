@@ -35,7 +35,7 @@ func display_choice(dict: Dictionary):
 func _on_choice_button(index: int):
 	emit_signal("request_next", index)
 
-func _on_Dialog_dialog_started(dialog: Dictionary, ref: Dialog):
+func _on_Dialog_dialog_started(dialog: Dictionary, ref):
 	if visible: return
 	
 	icon_rect.grab_focus()
