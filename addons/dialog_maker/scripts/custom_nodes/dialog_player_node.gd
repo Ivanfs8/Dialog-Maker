@@ -27,9 +27,19 @@ func display_secuence(dict: Dictionary):
 func display_choice(dict: Dictionary):
 	name_label.text = dict["name"]
 	content.text = dict["content"]
+	
 	options_menu.clear()
 	for choice in dict["choices"]:
 		options_menu.add_item(choice)
+	if dict.has("conditions"):
+		var index: int = 0
+		for cond in dict["conditions"]: #display, meet (bool)
+			if cond == null: continue
+			var choice_text: String = dict["choices"][index]
+			options_menu.set_item_text( index, str(cond["display"], " ", choice_text) )
+			options_menu.set_item_disabled(index, !cond["meet"])
+			#options_menu.items[0].get_node("Label").name
+			index += 1
 	options_menu.popup_centered()
 
 func _on_choice_button(index: int):

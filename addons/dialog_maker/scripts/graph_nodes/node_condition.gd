@@ -26,7 +26,7 @@ func display_condition():
 		get_condition_display(con["comparator"]), " ", con["value"], "/n")
 	$PreviewLabel.text = s
 
-func get_condition_display(comparator: int) -> String:
+static func get_condition_display(comparator: int) -> String:
 	match comparator:
 		TreeRes.COMP.EQUAL: return "=="
 		TreeRes.COMP.NOT: return "!="
