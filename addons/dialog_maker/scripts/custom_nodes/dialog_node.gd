@@ -74,6 +74,10 @@ func _exit_tree():
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
 func request_next(choice: int = -1):
+	if index == -1: 
+		end_dialog()
+		return
+	
 	var dialog_data: Dictionary = dialog.tree_data[index]
 	
 	match dialog_data["type"]:
@@ -134,6 +138,7 @@ func get_dict(dialog_data: Dictionary, _sec_index: int = -1) -> Dictionary:
 			"Secuence": 
 				var cond_node: Dictionary = dialog.tree_data[ dialog_data["conditions"][0]["id"] ]
 				dict["conditions"].append(get_condition(cond_node))
+				if !dict["conditions"][0]["meet"]: index = -1
 			"Choice": 
 				#the conditions have to match the choices, if there's no condition is equal null
 				for cho in dict["choices"]: dict["conditions"].append(null)

@@ -23,6 +23,9 @@ func _input(event: InputEvent):
 func display_secuence(dict: Dictionary):
 	name_label.text = dict["name"]
 	content.text = dict["content"]
+	
+	if dict.has("conditions") && !dict["conditions"][0]["meet"]:
+		content.text = dict["conditions"][0]["display"]
 
 func display_choice(dict: Dictionary):
 	name_label.text = dict["name"]
