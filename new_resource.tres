@@ -1,22 +1,23 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/tree_res.gd" type="Script" id=1]
 [ext_resource path="res://dialog_maker_resources/characters/test_char.tres" type="Resource" id=2]
 [ext_resource path="res://dialog_maker_resources/characters/test_char2.tres" type="Resource" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [resource]
 script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 3 ) ]
 nodes_data = [ {
 "name": "StartNode",
-"next": 4,
+"next": 6,
 "offset": Vector2( 20, 160 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
 }, {
 "choices": [ "bien", "mal" ],
 "conditions": [ {
-"id": 5,
+"id": 4,
 "port": 1
 } ],
 "name": "ChoiceNode",
@@ -40,7 +41,7 @@ nodes_data = [ {
 "type": "SecuenceNode"
 }, {
 "conditions": [ {
-"id": 6,
+"id": 5,
 "port": 1
 } ],
 "name": "SecuenceNode3",
@@ -51,22 +52,6 @@ nodes_data = [ {
 "text": "fock you"
 } ],
 "size": Vector2( 156, 150 ),
-"type": "SecuenceNode"
-}, {
-"name": "SecuenceNode",
-"next": 1,
-"offset": Vector2( 240, 160 ),
-"secuence": [ {
-"chara_id": 0,
-"text": "hola"
-}, {
-"chara_id": 1,
-"text": "holis"
-}, {
-"chara_id": 0,
-"text": "como vas?"
-} ],
-"size": Vector2( 199, 157 ),
 "type": "SecuenceNode"
 }, {
 "affects": [ {
@@ -96,8 +81,26 @@ nodes_data = [ {
 } ],
 "name": "ConditionNode2",
 "offset": Vector2( 760, 440 ),
-"size": Vector2( 138, 97 ),
+"size": Vector2( 138, 118 ),
 "type": "ConditionNode"
+}, {
+"name": "SecuenceNode",
+"next": 1,
+"offset": Vector2( 240, 160 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "hola"
+}, {
+"chara_id": 1,
+"portrait": ExtResource( 4 ),
+"pos": 0,
+"text": "holis"
+}, {
+"chara_id": 0,
+"text": "como vas?"
+} ],
+"size": Vector2( 199, 157 ),
+"type": "SecuenceNode"
 } ]
 connections = [ {
 "from": "StartNode",
@@ -133,7 +136,7 @@ connections = [ {
 tree_data = {
 0: {
 "name": "StartNode",
-"next": 4,
+"next": 6,
 "offset": Vector2( 20, 160 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
@@ -141,7 +144,7 @@ tree_data = {
 1: {
 "choices": [ "bien", "mal" ],
 "conditions": [ {
-"id": 5,
+"id": 4,
 "port": 1
 } ],
 "name": "ChoiceNode",
@@ -167,7 +170,7 @@ tree_data = {
 },
 3: {
 "conditions": [ {
-"id": 6,
+"id": 5,
 "port": 1
 } ],
 "name": "SecuenceNode3",
@@ -181,23 +184,6 @@ tree_data = {
 "type": "SecuenceNode"
 },
 4: {
-"name": "SecuenceNode",
-"next": 1,
-"offset": Vector2( 240, 160 ),
-"secuence": [ {
-"chara_id": 0,
-"text": "hola"
-}, {
-"chara_id": 1,
-"text": "holis"
-}, {
-"chara_id": 0,
-"text": "como vas?"
-} ],
-"size": Vector2( 199, 157 ),
-"type": "SecuenceNode"
-},
-5: {
 "affects": [ {
 "id": 1,
 "port": 1
@@ -213,7 +199,7 @@ tree_data = {
 "size": Vector2( 199, 97 ),
 "type": "ConditionNode"
 },
-6: {
+5: {
 "affects": [ {
 "id": 3,
 "port": 1
@@ -226,8 +212,25 @@ tree_data = {
 } ],
 "name": "ConditionNode2",
 "offset": Vector2( 760, 440 ),
-"size": Vector2( 138, 97 ),
+"size": Vector2( 138, 118 ),
 "type": "ConditionNode"
+},
+6: {
+"name": "SecuenceNode",
+"next": 1,
+"offset": Vector2( 240, 160 ),
+"secuence": [ {
+"chara_id": 0,
+"text": "hola"
+}, {
+"chara_id": 1,
+"text": "holis"
+}, {
+"chara_id": 0,
+"text": "como vas?"
+} ],
+"size": Vector2( 199, 157 ),
+"type": "SecuenceNode"
 }
 }
 properties = {

@@ -23,7 +23,7 @@ func display_condition():
 	var s: String
 	for con in conditions:
 		s += str("if: ", con["name"], " ", 
-		get_condition_display(con["comparator"]), " ", con["value"], "/n")
+		get_condition_display(con["comparator"]), " ", con["value"], "\n")
 	$PreviewLabel.text = s
 
 static func get_condition_display(comparator: int) -> String:

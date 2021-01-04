@@ -1,9 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/character_res.gd" type="Script" id=1]
+[ext_resource path="res://godobot.png" type="Texture" id=2]
+[ext_resource path="res://addons/dialog_maker/icons/GuiEllipsis.svg" type="Texture" id=3]
+[ext_resource path="res://addons/dialog_maker/icons/DeleteIcon.svg" type="Texture" id=4]
 
 [resource]
 script = ExtResource( 1 )
 display_name = "Joseph"
 color = Color( 0, 0, 0, 1 )
-portraits = [  ]
+portraits = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://addons/dialog_maker/scripts/tree_res.gd" type="Script" id=1]
+[ext_resource path="res://dialog_maker_resources/characters/test_char.tres" type="Resource" id=2]
+[ext_resource path="res://godobot.png" type="Texture" id=3]
+[ext_resource path="res://dialog_maker_resources/characters/test_char2.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+characters = [ ExtResource( 2 ), ExtResource( 4 ) ]
+nodes_data = [ {
+"name": "StartNode",
+"next": 1,
+"offset": Vector2( -200, 220 ),
+"size": Vector2( 97, 72 ),
+"type": "StartNode"
+}, {
+"name": "SecuenceNode",
+"next": -1,
+"offset": Vector2( 120, 220 ),
+"secuence": [ {
+"chara_id": 0,
+"portrait": ExtResource( 3 ),
+"pos": 0,
+"text": "test"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+} ]
+connections = [ {
+"from": "StartNode",
+"from_port": 0,
+"to": "SecuenceNode",
+"to_port": 0
+} ]
+tree_data = {
+0: {
+"name": "StartNode",
+"next": 1,
+"offset": Vector2( -200, 220 ),
+"size": Vector2( 97, 72 ),
+"type": "StartNode"
+},
+1: {
+"name": "SecuenceNode",
+"next": -1,
+"offset": Vector2( 120, 220 ),
+"secuence": [ {
+"chara_id": 0,
+"portrait": ExtResource( 3 ),
+"pos": 0,
+"text": "test"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}
+}
+properties = {
+
+}

@@ -1,7 +1,7 @@
 tool
 extends CheckBox
 
-var parent_ref: Control
+var character: CharacterRes
 
 func _exit_tree():
 	if Engine.editor_hint: return

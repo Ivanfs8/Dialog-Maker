@@ -25,18 +25,18 @@ func set_tree_resource(tree: TreeRes):
 	tree_graph.clear_all_nodes()
 	tree_resource = tree
 	
-	if tree.characters.empty():
-		invalid_tree_resource("Please add characters to the resource")
-		return
+#	if tree.characters.empty():
+#		invalid_tree_resource("Please add characters to the resource")
+#		return
 	
 	tree_graph.load_resource(tree_resource)
+	
+	properties_tab.set_tree_resource(tree_resource)
+	character_tab.set_tree_resource(tree_resource)
 	
 	secuence_editor.characters = tree_resource.characters
 	choice_editor.characters = tree_resource.characters
 	condition_editor.properties = tree_resource.properties
-	
-	properties_tab.set_tree_resource(tree_resource)
-	character_tab.set_tree_resource(tree_resource)
 	
 	$Label.hide()
 	$HSplitContainer.show()

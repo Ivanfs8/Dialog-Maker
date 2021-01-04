@@ -1,32 +1,46 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/tree_editor/dialogue_panel.gd" type="Script" id=1]
 [ext_resource path="res://addons/dialog_maker/icons/DeleteIcon.svg" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.164706, 0.188235, 0.231373, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0.0431373, 0.207843, 0.247059 )
 
 [node name="DialoguePanel" type="PanelContainer"]
-margin_right = 285.0
+margin_right = 225.0
 margin_bottom = 112.0
 size_flags_horizontal = 3
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 278.0
-margin_bottom = 107.0
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 219.0
+margin_bottom = 108.0
 
 [node name="OptionsPanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 271.0
+margin_right = 213.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/OptionsPanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 264.0
+margin_right = 206.0
 margin_bottom = 29.0
 
 [node name="CharacterOptionButton" type="OptionButton" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
@@ -34,23 +48,37 @@ margin_right = 89.0
 margin_bottom = 22.0
 text = "Character"
 
-[node name="Separator" type="Control" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
+[node name="PositionOptionButton" type="OptionButton" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
 margin_left = 93.0
-margin_right = 225.0
+margin_right = 163.0
+margin_bottom = 22.0
+text = "XOOO"
+items = [ "XOOO", null, false, 0, null, "OXOO", null, false, 1, null, "OOXO", null, false, 2, null, "OOOX", null, false, 3, null ]
+selected = 0
+
+[node name="Separator" type="Control" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
+margin_left = 167.0
+margin_right = 167.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DeleteButton" type="Button" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
-margin_left = 229.0
-margin_right = 257.0
+margin_left = 171.0
+margin_right = 199.0
 margin_bottom = 22.0
 icon = ExtResource( 2 )
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 40.0
-margin_right = 271.0
-margin_bottom = 100.0
+margin_right = 213.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 145.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -58,5 +86,30 @@ breakpoint_gutter = true
 smooth_scrolling = true
 wrap_enabled = true
 caret_blink = true
+
+[node name="PortraitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 149.0
+margin_right = 213.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_vertical = 3
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+visible = false
+margin_top = 114.0
+margin_right = 316.0
+margin_bottom = 118.0
+
+[node name="PortraitGridContainer" type="GridContainer" parent="VBoxContainer"]
+visible = false
+margin_top = 114.0
+margin_right = 316.0
+margin_bottom = 114.0
+columns = 4
 [connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/CharacterOptionButton" to="." method="on_edit"]
-[connection signal="text_changed" from="VBoxContainer/TextEdit" to="." method="on_edit"]
+[connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/CharacterOptionButton" to="." method="_on_CharacterOptionButton_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/PositionOptionButton" to="." method="on_edit"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/TextEdit" to="." method="on_edit"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PortraitButton" to="." method="_on_PortraitButton_pressed"]

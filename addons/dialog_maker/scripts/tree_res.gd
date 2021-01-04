@@ -5,7 +5,9 @@ func get_class() -> String: return "TreeRes"
 
 const DIALOGUE: Dictionary = {
 	"chara_id": 0,
-	"text": ""
+	"text": "",
+	"portrait": null,
+	"pos": 0
 }
 
 const CONDITION: Dictionary = {
