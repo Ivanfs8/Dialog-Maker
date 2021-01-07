@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/custom_nodes/dialog_node.gd" type="Script" id=1]
-[ext_resource path="res://new_resource.tres" type="Resource" id=2]
+[ext_resource path="res://new_resource2.tres" type="Resource" id=2]
 [ext_resource path="res://addons/dialog_maker/scenes/custom_nodes/DialogPlayer.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
@@ -29,4 +29,5 @@ autoload_properties_fetch = [ "AutoloadTest" ]
 [node name="DialogPlayer" parent="CanvasLayer" instance=ExtResource( 3 )]
 visible = false
 input_action = "test"
+back_character_color = Color( 0.231373, 0.27451, 0.345098, 1 )
 [connection signal="pressed" from="Button" to="Button/Dialog" method="start_dialog"]

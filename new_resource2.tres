@@ -1,60 +1,396 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scripts/tree_res.gd" type="Script" id=1]
 [ext_resource path="res://dialog_maker_resources/characters/test_char.tres" type="Resource" id=2]
 [ext_resource path="res://godobot.png" type="Texture" id=3]
 [ext_resource path="res://dialog_maker_resources/characters/test_char2.tres" type="Resource" id=4]
+[ext_resource path="res://addons/dialog_maker/icons/DialogPlay.svg" type="Texture" id=6]
+[ext_resource path="res://addons/dialog_maker/icons/DialogIcon.png" type="Texture" id=7]
 
 [resource]
 script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 4 ) ]
 nodes_data = [ {
 "name": "StartNode",
-"next": 1,
-"offset": Vector2( -200, 220 ),
+"next": 8,
+"offset": Vector2( 12, 225 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
 }, {
-"name": "SecuenceNode",
+"name": "SecuenceNode2",
 "next": -1,
-"offset": Vector2( 120, 220 ),
+"offset": Vector2( 700, 320 ),
 "secuence": [ {
-"chara_id": 0,
-"portrait": ExtResource( 3 ),
-"pos": 0,
-"text": "test"
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 2,
+"text": "adios"
 } ],
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
+}, {
+"affects": [ {
+"id": 10,
+"port": 2
+} ],
+"conditions": [ {
+"comparator": 5,
+"name": "vitality",
+"type": 2,
+"value": "12"
+} ],
+"name": "ConditionNode2",
+"offset": Vector2( 940, 200 ),
+"size": Vector2( 138, 118 ),
+"type": "ConditionNode"
+}, {
+"affects": [ {
+"id": 10,
+"port": 1
+} ],
+"conditions": [ {
+"comparator": 4,
+"name": "vitality",
+"type": 2,
+"value": "3"
+} ],
+"name": "ConditionNode",
+"offset": Vector2( 940, 60 ),
+"size": Vector2( 138, 118 ),
+"type": "ConditionNode"
+}, {
+"name": "SecuenceNode5",
+"next": -1,
+"offset": Vector2( 1560, -140 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 0,
+"text": "que mal"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"name": "SecuenceNode4",
+"next": -1,
+"offset": Vector2( 1560, 20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 0,
+"text": "que bien"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"name": "SecuenceNode6",
+"next": -1,
+"offset": Vector2( 1560, 180 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 0,
+"text": "a weno"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"name": "SecuenceNode3",
+"next": 10,
+"offset": Vector2( 680, -20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "tudo ben"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 0,
+"text": "y tu salud?"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"name": "SecuenceNode",
+"next": 9,
+"offset": Vector2( 220, 200 ),
+"secuence": [ {
+"chara_id": 0,
+"flip": false,
+"portrait": ExtResource( 3 ),
+"pos": 0,
+"text": "hola"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "aloha"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"choices": [ "como va?", "adiu" ],
+"name": "ChoiceNode",
+"offset": Vector2( 480, 200 ),
+"paths": [ 7, 1 ],
+"question": {
+"chara_id": 1,
+"flip": false,
+"portrait": null,
+"pos": 0,
+"text": "y tu salud?"
+},
+"size": Vector2( 118, 236 ),
+"type": "ChoiceNode"
+}, {
+"choices": [ "estoy mal", "bien bien", "no se" ],
+"conditions": [ {
+"id": 3,
+"port": 1
+} ],
+"name": "ChoiceNode2",
+"offset": Vector2( 1200, -20 ),
+"paths": [ 4, 5, 6 ],
+"question": {
+"chara_id": 1,
+"flip": false,
+"portrait": null,
+"pos": 0,
+"text": "y tu salud?"
+},
+"size": Vector2( 208, 578 ),
+"type": "ChoiceNode"
 } ]
 connections = [ {
 "from": "StartNode",
 "from_port": 0,
 "to": "SecuenceNode",
 "to_port": 0
+}, {
+"from": "SecuenceNode",
+"from_port": 0,
+"to": "ChoiceNode",
+"to_port": 0
+}, {
+"from": "ChoiceNode",
+"from_port": 1,
+"to": "SecuenceNode2",
+"to_port": 0
+}, {
+"from": "ChoiceNode",
+"from_port": 0,
+"to": "SecuenceNode3",
+"to_port": 0
+}, {
+"from": "SecuenceNode3",
+"from_port": 0,
+"to": "ChoiceNode2",
+"to_port": 0
+}, {
+"from": "ConditionNode",
+"from_port": 0,
+"to": "ChoiceNode2",
+"to_port": 1
+}, {
+"from": "ConditionNode2",
+"from_port": 0,
+"to": "ChoiceNode2",
+"to_port": 2
+}, {
+"from": "ChoiceNode2",
+"from_port": 1,
+"to": "SecuenceNode4",
+"to_port": 0
+}, {
+"from": "ChoiceNode2",
+"from_port": 0,
+"to": "SecuenceNode5",
+"to_port": 0
+}, {
+"from": "ChoiceNode2",
+"from_port": 2,
+"to": "SecuenceNode6",
+"to_port": 0
 } ]
 tree_data = {
 0: {
 "name": "StartNode",
-"next": 1,
-"offset": Vector2( -200, 220 ),
+"next": 8,
+"offset": Vector2( 12, 225 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
 },
 1: {
-"name": "SecuenceNode",
+"name": "SecuenceNode2",
 "next": -1,
-"offset": Vector2( 120, 220 ),
+"offset": Vector2( 700, 320 ),
 "secuence": [ {
-"chara_id": 0,
-"portrait": ExtResource( 3 ),
-"pos": 0,
-"text": "test"
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 2,
+"text": "adios"
 } ],
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
+},
+2: {
+"affects": [ {
+"id": 10,
+"port": 2
+} ],
+"conditions": [ {
+"comparator": 5,
+"name": "vitality",
+"type": 2,
+"value": "12"
+} ],
+"name": "ConditionNode2",
+"offset": Vector2( 940, 200 ),
+"size": Vector2( 138, 118 ),
+"type": "ConditionNode"
+},
+3: {
+"affects": [ {
+"id": 10,
+"port": 1
+} ],
+"conditions": [ {
+"comparator": 4,
+"name": "vitality",
+"type": 2,
+"value": "3"
+} ],
+"name": "ConditionNode",
+"offset": Vector2( 940, 60 ),
+"size": Vector2( 138, 118 ),
+"type": "ConditionNode"
+},
+4: {
+"name": "SecuenceNode5",
+"next": -1,
+"offset": Vector2( 1560, -140 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 0,
+"text": "que mal"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+},
+5: {
+"name": "SecuenceNode4",
+"next": -1,
+"offset": Vector2( 1560, 20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 0,
+"text": "que bien"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+},
+6: {
+"name": "SecuenceNode6",
+"next": -1,
+"offset": Vector2( 1560, 180 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 0,
+"text": "a weno"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+},
+7: {
+"name": "SecuenceNode3",
+"next": 10,
+"offset": Vector2( 680, -20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "tudo ben"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 0,
+"text": "y tu salud?"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+},
+8: {
+"name": "SecuenceNode",
+"next": 9,
+"offset": Vector2( 220, 200 ),
+"secuence": [ {
+"chara_id": 0,
+"flip": false,
+"portrait": ExtResource( 3 ),
+"pos": 0,
+"text": "hola"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "aloha"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+},
+9: {
+"choices": [ "como va?", "adiu" ],
+"name": "ChoiceNode",
+"offset": Vector2( 480, 200 ),
+"paths": [ 7, 1 ],
+"question": {
+"chara_id": 1,
+"flip": false,
+"portrait": null,
+"pos": 0,
+"text": "y tu salud?"
+},
+"size": Vector2( 118, 236 ),
+"type": "ChoiceNode"
+},
+10: {
+"choices": [ "estoy mal", "bien bien", "no se" ],
+"conditions": [ {
+"id": 3,
+"port": 1
+} ],
+"name": "ChoiceNode2",
+"offset": Vector2( 1200, -20 ),
+"paths": [ 4, 5, 6 ],
+"question": {
+"chara_id": 1,
+"flip": false,
+"portrait": null,
+"pos": 0,
+"text": "y tu salud?"
+},
+"size": Vector2( 208, 578 ),
+"type": "ChoiceNode"
 }
 }
 properties = {
-
+"vitality": 2
 }

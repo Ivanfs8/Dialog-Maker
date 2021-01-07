@@ -29,55 +29,61 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 6.0
 margin_top = 4.0
-margin_right = 219.0
-margin_bottom = 108.0
+margin_right = 257.0
+margin_bottom = 110.0
 
 [node name="OptionsPanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 213.0
-margin_bottom = 36.0
+margin_right = 251.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/OptionsPanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 206.0
-margin_bottom = 29.0
+margin_right = 244.0
+margin_bottom = 31.0
 
 [node name="CharacterOptionButton" type="OptionButton" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
 margin_right = 89.0
-margin_bottom = 22.0
+margin_bottom = 24.0
 text = "Character"
 
 [node name="PositionOptionButton" type="OptionButton" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
 margin_left = 93.0
-margin_right = 163.0
-margin_bottom = 22.0
-text = "XOOO"
-items = [ "XOOO", null, false, 0, null, "OXOO", null, false, 1, null, "OOXO", null, false, 2, null, "OOOX", null, false, 3, null ]
+margin_right = 146.0
+margin_bottom = 24.0
+text = "Left"
+items = [ "Left", null, false, 0, null, "Center", null, false, 1, null, "Right", null, false, 2, null, "1", null, false, 3, null, "2", null, false, 4, null, "3", null, false, 5, null, "4", null, false, 6, null ]
 selected = 0
 
+[node name="FlipCheckBox" type="CheckBox" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
+margin_left = 150.0
+margin_right = 201.0
+margin_bottom = 24.0
+text = "Flip"
+
 [node name="Separator" type="Control" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
-margin_left = 167.0
-margin_right = 167.0
-margin_bottom = 22.0
+margin_left = 205.0
+margin_right = 205.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DeleteButton" type="Button" parent="VBoxContainer/OptionsPanelContainer/HBoxContainer"]
-margin_left = 171.0
-margin_right = 199.0
-margin_bottom = 22.0
+margin_left = 209.0
+margin_right = 237.0
+margin_bottom = 24.0
 icon = ExtResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 40.0
-margin_right = 213.0
-margin_bottom = 104.0
+margin_top = 42.0
+margin_right = 251.0
+margin_bottom = 106.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 145.0
+margin_right = 183.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
@@ -88,8 +94,8 @@ wrap_enabled = true
 caret_blink = true
 
 [node name="PortraitButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 149.0
-margin_right = 213.0
+margin_left = 187.0
+margin_right = 251.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 size_flags_vertical = 3
@@ -111,5 +117,6 @@ columns = 4
 [connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/CharacterOptionButton" to="." method="on_edit"]
 [connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/CharacterOptionButton" to="." method="_on_CharacterOptionButton_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/PositionOptionButton" to="." method="on_edit"]
+[connection signal="toggled" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/FlipCheckBox" to="." method="on_edit"]
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/TextEdit" to="." method="on_edit"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PortraitButton" to="." method="_on_PortraitButton_pressed"]

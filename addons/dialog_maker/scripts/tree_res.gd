@@ -7,7 +7,8 @@ const DIALOGUE: Dictionary = {
 	"chara_id": 0,
 	"text": "",
 	"portrait": null,
-	"pos": 0
+	"pos": 0,
+	"flip": false
 }
 
 const CONDITION: Dictionary = {

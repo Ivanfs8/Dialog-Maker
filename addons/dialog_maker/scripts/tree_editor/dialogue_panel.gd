@@ -13,6 +13,7 @@ onready var character_option: OptionButton = $VBoxContainer/OptionsPanelContaine
 onready var delete_button: Button = $VBoxContainer/OptionsPanelContainer/HBoxContainer/DeleteButton
 
 onready var pos_option: OptionButton = $VBoxContainer/OptionsPanelContainer/HBoxContainer/PositionOptionButton
+onready var flip_check: CheckBox = $VBoxContainer/OptionsPanelContainer/HBoxContainer/FlipCheckBox
 onready var portrait_button: Button = $VBoxContainer/HBoxContainer/PortraitButton
 onready var portrait_grid: GridContainer = $VBoxContainer/PortraitGridContainer
 
@@ -37,6 +38,7 @@ func load_dialogue(_characters: Array, dialog: Dictionary) -> void:
 	character_option.select( int(clamp(dialog["chara_id"], 0, character_option.get_item_count() - 1 )) )
 	
 	pos_option.select(dialog["pos"])
+	flip_check.pressed = dialog["flip"]
 	
 	if dialog["portrait"]: portrait_button.icon = dialog["portrait"]
 	elif characters[dialog["chara_id"]].portraits.size() != 0: 
@@ -49,7 +51,8 @@ func get_dialogue() -> Dictionary:
 		"chara_id": character_option.selected, 
 		"text": text_edit.text,
 		"portrait": portrait_button.icon,
-		"pos": pos_option.selected
+		"pos": pos_option.selected,
+		"flip": flip_check.pressed
 	}
 	
 #	print("[" + String(dialog.character_id) + "] " + dialog.text)

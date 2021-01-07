@@ -8,12 +8,25 @@ onready var content: RichTextLabel = $VBoxContainer/DialogContainer/VBoxContaine
 onready var icon_rect: TextureRect = $VBoxContainer/DialogContainer/VBoxContainer/IconRect
 onready var options_menu: PopupMenu = $VBoxContainer/VBoxContainer/OptionsMenu
 
+onready var portraits: Array = [
+	$"3Portraits/PortraitLeft",
+	$"3Portraits/PortraitCenter",
+	$"3Portraits/PortraitRight",
+	$"4Portraits/Portrait1",
+	$"4Portraits/Portrait2",
+	$"4Portraits/Portrait3",
+	$"4Portraits/Portrait4"
+]
+
 export var input_action: String
+export var back_character_color: Color = Color.white
 
 var current_dialog: Dictionary
 
 func _ready():
 	hide()
+	for portra in portraits:
+		portra.hide()
 
 func _input(event: InputEvent):
 	if Input.is_action_just_released(input_action):
@@ -45,6 +58,21 @@ func display_choice(dict: Dictionary):
 			index += 1
 	options_menu.popup_centered()
 
+func display_portrait(texture: Texture, pos: int, flip: bool = false):
+	var portrait: TextureRect = portraits[pos]
+	var parent: Control = portrait.get_parent()
+	
+	for portra in portraits:
+		portra = portra as TextureRect
+		portra.self_modulate = back_character_color
+	
+	portrait.show()
+	portrait.texture = texture
+	portrait.flip_h = flip
+	portrait.self_modulate = Color.white
+	
+	parent.move_child(portrait, parent.get_child_count()-1)
+
 func _on_choice_button(index: int):
 	emit_signal("request_next", index)
 
@@ -63,6 +91,8 @@ func _on_Dialog_dialog_started(dialog: Dictionary, ref):
 		"Secuence": display_secuence(dialog)
 		"Choice": display_choice(dialog)
 	
+	display_portrait(dialog["portrait"], dialog["pos"], dialog["flip"])
+	
 	show()
 
 func _on_Dialog_dialog_next(dialog: Dictionary):
@@ -71,6 +101,8 @@ func _on_Dialog_dialog_next(dialog: Dictionary):
 	match dialog["type"]:
 		"Secuence": display_secuence(dialog)
 		"Choice": display_choice(dialog)
+	
+	display_portrait(dialog["portrait"], dialog["pos"], dialog["flip"])
 
 func _on_Dialog_dialog_ended():
 	for sig in get_signal_connection_list("request_next"):

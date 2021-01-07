@@ -115,13 +115,19 @@ func get_dict(dialog_data: Dictionary, _sec_index: int = -1) -> Dictionary:
 			dict = {
 				"type": "Secuence",
 				"name": dialog.characters[dialog_data["secuence"][_sec_index]["chara_id"]].display_name,
-				"content": dialog_data["secuence"][_sec_index]["text"]
+				"content": dialog_data["secuence"][_sec_index]["text"],
+				"portrait": dialog_data["secuence"][_sec_index]["portrait"],
+				"pos": dialog_data["secuence"][_sec_index]["pos"],
+				"flip": dialog_data["secuence"][_sec_index]["flip"]
 			}
 		"ChoiceNode":
 			dict = {
 				"type": "Choice",
 				"name": dialog.characters[dialog_data["question"]["chara_id"]].display_name,
 				"content": dialog_data["question"]["text"],
+				"portrait": dialog_data["question"]["portrait"],
+				"pos": dialog_data["question"]["pos"],
+				"flip": dialog_data["question"]["flip"],
 				"choices": dialog_data["choices"]
 			}
 		"ConditionNode": 
