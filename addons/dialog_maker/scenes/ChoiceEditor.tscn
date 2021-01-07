@@ -35,9 +35,10 @@ __meta__ = {
 
 [node name="DialoguePanel" parent="VBoxContainer" instance=ExtResource( 1 )]
 margin_right = 288.0
+margin_bottom = 114.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-margin_top = 116.0
+margin_top = 118.0
 margin_right = 288.0
 margin_bottom = 388.0
 size_flags_horizontal = 3
@@ -49,7 +50,7 @@ __meta__ = {
 
 [node name="ChoicesVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 margin_right = 288.0
-margin_bottom = 272.0
+margin_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {

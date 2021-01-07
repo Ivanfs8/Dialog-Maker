@@ -30,7 +30,7 @@ func load_condition(props: Dictionary, cond: Dictionary) -> void:
 	
 	var id: int = 0
 	for ind in properties.size():
-		print(str("prop_ind: ", ind))
+		#print(str("prop_ind: ", ind))
 		if prop_option.get_item_text(ind) == cond["name"]:
 			id = ind
 			break

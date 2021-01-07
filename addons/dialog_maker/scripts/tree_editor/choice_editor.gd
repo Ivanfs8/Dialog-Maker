@@ -39,7 +39,9 @@ func clear_choices():
 
 func load_choices(question: Dictionary, choices: Array):
 	#load question
+	question_panel.disconnect("dialogue_edited", self, "on_edit_question")
 	question_panel.load_dialogue(characters, question)
+	question_panel.connect("dialogue_edited", self, "on_edit_question")
 	
 	if choices.empty():
 		clear_choices()
@@ -120,8 +122,7 @@ func on_edit_choice(choice_panel: ChoicePanel):
 	current_node.display_choices()
 
 func on_edit_question():
-	current_node.question["chara_id"] = question_panel.character_option.selected
-	current_node.question["text"] = question_panel.text_edit.text
+	current_node.question = question_panel.get_dialogue()
 	
 	current_node.display_choices(true)
 

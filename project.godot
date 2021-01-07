@@ -106,10 +106,6 @@ config/icon="res://icon.png"
 
 AutoloadTest="*res://autoloadtest.gd"
 
-[editor_plugins]
-
-enabled=PoolStringArray( "dialog_maker" )
-
 [input]
 
 test={

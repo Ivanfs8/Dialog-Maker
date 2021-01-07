@@ -26,6 +26,7 @@ func _exit_tree():
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
 func load_dialogue(_characters: Array, dialog: Dictionary) -> void:
+	#print("load dialoge: ", dialog)
 	characters = _characters
 	
 	character_option.clear()
@@ -92,7 +93,7 @@ func on_change_character(active: bool, characters: Array):
 
 func _on_PortraitButton_pressed():
 	portrait_grid.visible = !portrait_grid.visible
-	$VBoxContainer/HSeparator.visible = !portrait_grid.visible
+	$VBoxContainer/HSeparator.visible = portrait_grid.visible
 
 func _on_CharacterOptionButton_item_selected(index):
 	update_portrait_grid(characters[index])

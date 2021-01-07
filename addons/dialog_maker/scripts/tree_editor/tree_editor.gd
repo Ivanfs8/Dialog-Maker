@@ -128,7 +128,7 @@ func _on_PopupMenu_id_pressed(id: int):
 		2: new_node = add_node("Condition", get_local_mouse_position() + scroll_offset)
 	
 	if !auto_connect.empty() && id != 2:
-		connect_node(auto_connect["from"], auto_connect["from_slot"], new_node.name, 0)
+		_on_TreeGraphEdit_connection_request(auto_connect["from"], auto_connect["from_slot"], new_node.name, 0)
 		auto_connect = {}
 
 func _on_TreeGraphEdit_connection_to_empty(from: String, from_slot: int, release_position: Vector2):

@@ -12,7 +12,7 @@ script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 4 ) ]
 nodes_data = [ {
 "name": "StartNode",
-"next": 8,
+"next": 7,
 "offset": Vector2( 12, 225 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
@@ -31,7 +31,7 @@ nodes_data = [ {
 "type": "SecuenceNode"
 }, {
 "affects": [ {
-"id": 10,
+"id": 9,
 "port": 2
 } ],
 "conditions": [ {
@@ -46,7 +46,7 @@ nodes_data = [ {
 "type": "ConditionNode"
 }, {
 "affects": [ {
-"id": 10,
+"id": 9,
 "port": 1
 } ],
 "conditions": [ {
@@ -99,27 +99,8 @@ nodes_data = [ {
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
 }, {
-"name": "SecuenceNode3",
-"next": 10,
-"offset": Vector2( 680, -20 ),
-"secuence": [ {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 6 ),
-"pos": 2,
-"text": "tudo ben"
-}, {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 7 ),
-"pos": 0,
-"text": "y tu salud?"
-} ],
-"size": Vector2( 156, 150 ),
-"type": "SecuenceNode"
-}, {
 "name": "SecuenceNode",
-"next": 9,
+"next": 8,
 "offset": Vector2( 220, 200 ),
 "secuence": [ {
 "chara_id": 0,
@@ -140,13 +121,13 @@ nodes_data = [ {
 "choices": [ "como va?", "adiu" ],
 "name": "ChoiceNode",
 "offset": Vector2( 480, 200 ),
-"paths": [ 7, 1 ],
+"paths": [ 10, 1 ],
 "question": {
-"chara_id": 1,
+"chara_id": 0,
 "flip": false,
-"portrait": null,
+"portrait": ExtResource( 3 ),
 "pos": 0,
-"text": "y tu salud?"
+"text": "a"
 },
 "size": Vector2( 118, 236 ),
 "type": "ChoiceNode"
@@ -162,12 +143,31 @@ nodes_data = [ {
 "question": {
 "chara_id": 1,
 "flip": false,
-"portrait": null,
-"pos": 0,
+"portrait": ExtResource( 7 ),
+"pos": 2,
 "text": "y tu salud?"
 },
-"size": Vector2( 208, 578 ),
+"size": Vector2( 208, 866 ),
 "type": "ChoiceNode"
+}, {
+"name": "SecuenceNode3",
+"next": 9,
+"offset": Vector2( 680, -20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "tudo ben"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 2,
+"text": "y tu salud?"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
 } ]
 connections = [ {
 "from": "StartNode",
@@ -223,7 +223,7 @@ connections = [ {
 tree_data = {
 0: {
 "name": "StartNode",
-"next": 8,
+"next": 7,
 "offset": Vector2( 12, 225 ),
 "size": Vector2( 97, 72 ),
 "type": "StartNode"
@@ -244,7 +244,7 @@ tree_data = {
 },
 2: {
 "affects": [ {
-"id": 10,
+"id": 9,
 "port": 2
 } ],
 "conditions": [ {
@@ -260,7 +260,7 @@ tree_data = {
 },
 3: {
 "affects": [ {
-"id": 10,
+"id": 9,
 "port": 1
 } ],
 "conditions": [ {
@@ -317,28 +317,8 @@ tree_data = {
 "type": "SecuenceNode"
 },
 7: {
-"name": "SecuenceNode3",
-"next": 10,
-"offset": Vector2( 680, -20 ),
-"secuence": [ {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 6 ),
-"pos": 2,
-"text": "tudo ben"
-}, {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 7 ),
-"pos": 0,
-"text": "y tu salud?"
-} ],
-"size": Vector2( 156, 150 ),
-"type": "SecuenceNode"
-},
-8: {
 "name": "SecuenceNode",
-"next": 9,
+"next": 8,
 "offset": Vector2( 220, 200 ),
 "secuence": [ {
 "chara_id": 0,
@@ -356,22 +336,22 @@ tree_data = {
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
 },
-9: {
+8: {
 "choices": [ "como va?", "adiu" ],
 "name": "ChoiceNode",
 "offset": Vector2( 480, 200 ),
-"paths": [ 7, 1 ],
+"paths": [ 10, 1 ],
 "question": {
-"chara_id": 1,
+"chara_id": 0,
 "flip": false,
-"portrait": null,
+"portrait": ExtResource( 3 ),
 "pos": 0,
-"text": "y tu salud?"
+"text": "a"
 },
 "size": Vector2( 118, 236 ),
 "type": "ChoiceNode"
 },
-10: {
+9: {
 "choices": [ "estoy mal", "bien bien", "no se" ],
 "conditions": [ {
 "id": 3,
@@ -383,12 +363,32 @@ tree_data = {
 "question": {
 "chara_id": 1,
 "flip": false,
-"portrait": null,
-"pos": 0,
+"portrait": ExtResource( 7 ),
+"pos": 2,
 "text": "y tu salud?"
 },
-"size": Vector2( 208, 578 ),
+"size": Vector2( 208, 866 ),
 "type": "ChoiceNode"
+},
+10: {
+"name": "SecuenceNode3",
+"next": 9,
+"offset": Vector2( 680, -20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "tudo ben"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 2,
+"text": "y tu salud?"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
 }
 }
 properties = {
