@@ -7,11 +7,18 @@ const MainPanel: Script = preload("res://addons/dialog_maker/scripts/main_panel.
 
 var main_panel_instance: MainPanel
 
+const EditorDockScene: PackedScene = preload("res://addons/dialog_maker/scenes/EditorDock.tscn")
+
+var editor_dock_instance: Control
+
 func _enter_tree():
 	main_panel_instance = MainPanelScene.instance()
 	main_panel_instance.undo_redo = get_undo_redo()
 	get_editor_interface().get_editor_viewport().add_child(main_panel_instance)
-#	dock_button = add_control_to_bottom_panel(main_panel_instance, "Dialog Maker")
+	
+	editor_dock_instance = EditorDockScene.instance()
+	add_control_to_dock(EditorPlugin.DOCK_SLOT_RIGHT_UL, editor_dock_instance)
+	
 	make_visible(false)
 	
 	var directory: Directory = Directory.new()
@@ -25,10 +32,20 @@ func _enter_tree():
 		var err = directory.make_dir("res://dialog_maker_resources/dialogues")
 		print(err)
 
+func _ready():
+	#	get_node("HSplitContainer/TreeVBoxContainer/TreeGraphEdit")
+	main_panel_instance.tree_graph.connect("node_selected", editor_dock_instance, "select_node")
+	main_panel_instance.character_tab.connect("character_changed", editor_dock_instance.secuence_editor, "on_characters_change")
+	main_panel_instance.character_tab.connect("character_changed", editor_dock_instance.choice_editor, "on_characters_change")
+	main_panel_instance.properties_tab.connect("property_changed", editor_dock_instance.condition_editor, "on_properties_change")
+
 func _exit_tree():
 	if main_panel_instance:
 #		remove_control_from_bottom_panel(main_panel_instance)
 		main_panel_instance.queue_free()
+	if editor_dock_instance:
+		remove_control_from_docks(editor_dock_instance)
+		editor_dock_instance.queue_free()
 	OS.low_processor_usage_mode = false
 
 func has_main_screen():
@@ -61,8 +78,10 @@ func handles(object):
 func edit(object):
 	object = object as TreeRes
 	OS.low_processor_usage_mode = true
+	editor_dock_instance.tree_resource = object
 	main_panel_instance.set_tree_resource(object)
 	
 func save_external_data():
 	if main_panel_instance:
+		editor_dock_instance.save_resource()
 		main_panel_instance.save_resource()

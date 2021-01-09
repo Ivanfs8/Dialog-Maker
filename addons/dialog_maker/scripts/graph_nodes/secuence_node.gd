@@ -23,7 +23,7 @@ func load_save_data(save_data: Dictionary):
 	
 	display_secuence()
 
-func display_secuence():
+func display_secuence(d_name: String = ""):
 	for label in preview_container.get_children():
 		if label is Label: label.queue_free()
 	
@@ -35,7 +35,10 @@ func display_secuence():
 #		new_label.autowrap = true
 #		new_label.max_lines_visible = 2
 		
-		new_label.text = "[" + String(dialog["chara_id"]) + "] " + dialog["text"]
+		if d_name == "":
+			new_label.text = "[" + String(dialog["chara_id"]) + "] " + dialog["text"]
+		else:
+			new_label.text = "[" + d_name + "] " + dialog["text"]
 		preview_container.add_child(new_label)
 #		set_slot(i, false, 0, Color.white, true, 0, Color.white)
 

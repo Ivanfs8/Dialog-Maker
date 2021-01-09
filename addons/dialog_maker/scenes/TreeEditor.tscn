@@ -33,7 +33,6 @@ align = 1
 valign = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
-visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 
@@ -154,6 +153,13 @@ margin_right = 284.0
 margin_bottom = 20.0
 text = "Condition"
 
+[node name="Control" type="Control" parent="HSplitContainer/TreeVBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 288.0
+margin_right = 1010.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="TreeGraphEdit" type="GraphEdit" parent="HSplitContainer/TreeVBoxContainer"]
 margin_top = 38.0
 margin_right = 1024.0
@@ -174,8 +180,9 @@ margin_bottom = 52.0
 items = [ "Secuence", null, 0, false, false, 0, 0, null, "", false, "Choice", null, 0, false, false, 1, 0, null, "", false, "Condition", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer"]
-margin_left = 512.0
-margin_right = 1116.0
+visible = false
+margin_left = 1024.0
+margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="SecuenceEditor" parent="HSplitContainer/HBoxContainer" instance=ExtResource( 3 )]
@@ -198,7 +205,6 @@ visible = false
 [connection signal="connection_request" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_connection_request"]
 [connection signal="connection_to_empty" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_connection_to_empty"]
 [connection signal="disconnection_request" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_disconnection_request"]
-[connection signal="node_selected" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="." method="_on_TreeGraphEdit_node_selected"]
 [connection signal="popup_request" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_TreeGraphEdit_popup_request"]
 [connection signal="id_pressed" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit/PopupMenu" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_PopupMenu_id_pressed"]
 [connection signal="popup_hide" from="HSplitContainer/TreeVBoxContainer/TreeGraphEdit/PopupMenu" to="HSplitContainer/TreeVBoxContainer/TreeGraphEdit" method="_on_PopupMenu_popup_hide"]

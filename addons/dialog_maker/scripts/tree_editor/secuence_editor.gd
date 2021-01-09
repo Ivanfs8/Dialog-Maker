@@ -101,9 +101,10 @@ func move_dialogue(dialog_panel: DialoguePanel, new_index: int):
 	current_node.display_secuence()
 
 func on_edit_dialogue(dialog_panel: DialoguePanel):
-	current_node.secuence[dialog_panel.index] = dialog_panel.get_dialogue()
+	var dialog: Dictionary = dialog_panel.get_dialogue()
+	current_node.secuence[dialog_panel.index] = dialog
 	
-	current_node.display_secuence()
+	current_node.display_secuence(characters[ dialog["chara_id"] ].display_name)
 	
 func on_characters_change(active: bool, _characters: Array):
 	characters = _characters

@@ -22,6 +22,11 @@ func _ready():
 	remove_valid_connection_type(0,1)
 	remove_valid_connection_type(1,0)
 
+func _exit_tree():
+	if Engine.editor_hint: return
+	for sig in get_signal_connection_list("node_selected"):
+		disconnect(sig["signal"], sig["target"], sig["method"])
+
 func get_nodes() -> Array:
 	var nodes: Array = []
 	for node in get_children():
