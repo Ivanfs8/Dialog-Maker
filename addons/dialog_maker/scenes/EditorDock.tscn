@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/dialog_maker/scenes/ChoiceEditor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/dialog_maker/scenes/ConditionEditor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/dialog_maker/scenes/SecuenceEditor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/dialog_maker/scripts/tree_editor/editor_dock.gd" type="Script" id=4]
+[ext_resource path="res://addons/dialog_maker/scenes/StartEditor.tscn" type="PackedScene" id=5]
 
 [node name="DialogEditor" type="PanelContainer"]
 margin_right = 127.0
@@ -21,6 +22,13 @@ margin_bottom = 72.0
 text = "No node selected"
 align = 1
 valign = 2
+
+[node name="StartEditor" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 120.0
+margin_bottom = 123.0
 
 [node name="SecuenceEditor" parent="." instance=ExtResource( 3 )]
 visible = false
@@ -41,4 +49,4 @@ visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 307.0
-margin_bottom = 157.0
+margin_bottom = 123.0

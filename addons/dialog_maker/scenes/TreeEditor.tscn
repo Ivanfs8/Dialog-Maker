@@ -33,6 +33,7 @@ align = 1
 valign = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
+visible = false
 margin_right = 1024.0
 margin_bottom = 600.0
 

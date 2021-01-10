@@ -65,6 +65,7 @@ func add_dialogue():
 	dialogues_cont.add_child(new_dialog_panel)
 	new_dialog_panel.load_dialogue(characters, new_dialog)
 	
+	new_dialog = new_dialog_panel.get_dialogue()
 	connect_dialog(new_dialog_panel)
 	
 	new_dialog_panel.index = current_node.secuence.size() - 1

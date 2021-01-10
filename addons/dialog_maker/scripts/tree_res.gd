@@ -11,6 +11,13 @@ const DIALOGUE: Dictionary = {
 	"flip": false
 }
 
+const START: Dictionary = {
+	"chara_id": 0, 
+	"portrait": null,
+	"pos": 0,
+	"flip": false
+}
+
 const CONDITION: Dictionary = {
 	"name": "", 
 	"type": 0,

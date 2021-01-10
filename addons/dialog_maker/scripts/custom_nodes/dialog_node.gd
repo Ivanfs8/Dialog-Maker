@@ -62,7 +62,7 @@ func start_dialog():
 	sec_index = 0
 	
 	print("dialog_started")
-	emit_signal( "dialog_started", get_dict(dialog_data, sec_index), self )
+	emit_signal( "dialog_started", dialog.tree_data[0]["start_data"], get_dict(dialog_data, sec_index), self )
 
 func _exit_tree():
 	if Engine.editor_hint: return
@@ -111,6 +111,12 @@ func end_dialog():
 func get_dict(dialog_data: Dictionary, _sec_index: int = -1) -> Dictionary:
 	var dict: Dictionary
 	match dialog_data["type"]:
+		"StartNode":
+			dict = {
+				"type": "Start",
+				"start_data": dialog_data["start_data"]
+			}
+			return dict
 		"SecuenceNode": 
 			dict = {
 				"type": "Secuence",

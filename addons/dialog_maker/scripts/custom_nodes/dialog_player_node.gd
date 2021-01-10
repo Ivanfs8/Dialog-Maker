@@ -76,10 +76,13 @@ func display_portrait(texture: Texture, pos: int, flip: bool = false):
 func _on_choice_button(index: int):
 	emit_signal("request_next", index)
 
-func _on_Dialog_dialog_started(dialog: Dictionary, ref):
+func _on_Dialog_dialog_started(start_data:Array, dialog: Dictionary, ref):
 	if visible: return
 	
 	icon_rect.grab_focus()
+	
+	for data in start_data:
+		display_portrait(data["portrait"], data["pos"], data["flip"])
 	
 	connect("request_next", ref, "request_next")
 	ref.connect("dialog_next", self, "_on_Dialog_dialog_next")

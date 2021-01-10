@@ -20,27 +20,19 @@ func set_current_node(node: ChoiceNode):
 	
 	load_choices(node.question, node.choices)
 
-#func _exit_tree():
-#	for choice_panel in choices_cont.get_children():
-#		connect_choice(choice_panel, true)
-
-func connect_choice(choice_panel: ChoicePanel, disc: bool = false):
-	if !disc:
-		choice_panel.delete_button.connect("pressed", self, "delete_choice", [choice_panel])
-		choice_panel.connect("choice_edited", self, "on_edit_choice", [choice_panel])
-	else:
-		choice_panel.delete_button.disconnect("pressed", self, "delete_choice")
-		choice_panel.disconnect("choice_edited", self, "on_edit_choice")
+func connect_choice(choice_panel: ChoicePanel):
+	choice_panel.delete_button.connect("pressed", self, "delete_choice", [choice_panel])
+	choice_panel.connect("choice_edited", self, "on_edit_choice", [choice_panel])
 
 func clear_choices():
 	for panel in choices_cont.get_children():
-		connect_choice(panel, true)
 		panel.free()
 
 func load_choices(question: Dictionary, choices: Array):
 	#load question
 	question_panel.disconnect("dialogue_edited", self, "on_edit_question")
 	question_panel.load_dialogue(characters, question)
+	current_node.question = question_panel.get_dialogue()
 	question_panel.connect("dialogue_edited", self, "on_edit_question")
 	
 	if choices.empty():

@@ -71,7 +71,8 @@ class TreeData:
 		var index: int = 0
 		for node in nodes_data:
 			match node["type"]:
-				"SecuenceNode", "StartNode": node["next"] = get_next(node["name"])
+				"StartNode": node["next"] = get_next(node["name"])
+				"SecuenceNode": node["next"] = get_next(node["name"])
 				"ChoiceNode": node["paths"] = get_paths(node)
 				"ConditionNode": 
 					node["affects"] = get_affects(node)
