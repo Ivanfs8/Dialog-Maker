@@ -42,12 +42,12 @@ func load_data(data_array: Array):
 	for data in data_array:
 		#re use previous dialogues or add necessary
 		if index + 1 <= panel_container.get_child_count():
-			panel_container.get_child(index).load_dialogue(characters, data)
+			panel_container.get_child(index).load_start_data(characters, data)
 			panel_container.get_child(index).index = index
 		else:
 			var start_panel: StartPanel = StartPanelScene.instance()
 			panel_container.add_child(start_panel)
-			start_panel.load_dialogue(characters, data)
+			start_panel.load_start_data(characters, data)
 			
 			connect_panel(start_panel)
 			
@@ -61,7 +61,7 @@ func add_panel():
 	
 	var new_panel: StartPanel = StartPanelScene.instance()
 	panel_container.add_child(new_panel)
-	new_panel.load_dialogue(characters, new_data)
+	new_panel.load_start_data(characters, new_data)
 	
 	new_data = new_panel.get_panel_data()
 	connect_panel(new_panel)

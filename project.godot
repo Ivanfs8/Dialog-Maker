@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "TreeNode",
 "class": "ConditionNode",
 "language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/graph_nodes/node_condition.gd"
+"path": "res://addons/dialog_maker/scripts/graph_nodes/condition_node.gd"
 }, {
 "base": "PanelContainer",
 "class": "ConditionPanel",
@@ -111,10 +111,6 @@ config/icon="res://icon.png"
 [autoload]
 
 AutoloadTest="*res://autoloadtest.gd"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "dialog_maker" )
 
 [input]
 

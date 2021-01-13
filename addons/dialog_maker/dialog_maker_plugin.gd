@@ -82,6 +82,6 @@ func edit(object):
 	main_panel_instance.set_tree_resource(object)
 	
 func save_external_data():
-	if main_panel_instance:
+	if main_panel_instance && main_panel_instance.tree_resource != null:
 		editor_dock_instance.save_resource()
 		main_panel_instance.save_resource()

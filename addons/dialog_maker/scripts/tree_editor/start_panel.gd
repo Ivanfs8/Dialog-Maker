@@ -24,7 +24,7 @@ func _exit_tree():
 	for sig in get_signal_connection_list("panel_edited"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
-func load_dialogue(_characters: Array, data: Dictionary) -> void:
+func load_start_data(_characters: Array, data: Dictionary) -> void:
 	#print("load dialoge: ", dialog)
 	characters = _characters
 	
