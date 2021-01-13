@@ -14,7 +14,7 @@ onready var secuence_editor: PanelContainer = $SecuenceEditor
 onready var choice_editor: PanelContainer = $ChoiceEditor
 onready var condition_editor: PanelContainer = $ConditionEditor
 
-func select_node(node: TreeNode):
+func select_node(node: DgTreeNode):
 	hide_editors()
 	
 	match node.get_class():

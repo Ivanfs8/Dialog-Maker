@@ -28,7 +28,7 @@ func clear_choices():
 	for panel in choices_cont.get_children():
 		panel.free()
 
-func load_choices(question: Dictionary, choices: Array):
+func load_choices(question: DialogMaker.Dialogue, choices: PoolStringArray):
 	#load question
 	question_panel.disconnect("dialogue_edited", self, "on_edit_question")
 	question_panel.load_dialogue(characters, question)

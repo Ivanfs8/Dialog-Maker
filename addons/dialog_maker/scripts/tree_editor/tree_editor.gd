@@ -42,7 +42,7 @@ func save_resource(res: TreeRes):
 	res.nodes_data.clear()
 	res.nodes_data.append(get_node("StartNode").get_save_data())
 	for node in get_nodes():
-		node = node as TreeNode
+		node = node as DgTreeNode
 		if node.name == "StartNode": continue
 		res.nodes_data.append(node.get_save_data())
 	
@@ -55,7 +55,7 @@ func load_resource(tree: TreeRes):
 	else:
 		#load all saved nodes
 		for node_data in tree.nodes_data:
-			var node: TreeNode = add_node(node_data["type"])
+			var node: DgTreeNode = add_node(node_data.type)
 			node.load_save_data(node_data)
 	
 	#load all saved connections
@@ -64,7 +64,7 @@ func load_resource(tree: TreeRes):
 			connect_node(c.from, c.from_port, c.to, c.to_port)
 
 func add_node(type: String, pos: Vector2 = rect_size * 0.5 + scroll_offset):
-	var new_node: GraphNode
+	var new_node: DgTreeNode
 	
 	match type:
 		"Start", "StartNode": new_node = StartNodeScene.instance()
@@ -126,7 +126,7 @@ func _on_TreeGraphEdit_popup_request(position: Vector2):
 	popup_menu.popup()
 
 func _on_PopupMenu_id_pressed(id: int):
-	var new_node: TreeNode
+	var new_node: DgTreeNode
 	match id:
 		0: new_node = add_node("Secuence", get_local_mouse_position() + scroll_offset)
 		1: new_node = add_node("Choice", get_local_mouse_position() + scroll_offset)

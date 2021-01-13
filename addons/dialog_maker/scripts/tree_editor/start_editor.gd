@@ -42,12 +42,12 @@ func load_data(data_array: Array):
 	for data in data_array:
 		#re use previous dialogues or add necessary
 		if index + 1 <= panel_container.get_child_count():
-			panel_container.get_child(index).load_dialogue(characters, data)
+			panel_container.get_child(index).load_start_data(characters, data)
 			panel_container.get_child(index).index = index
 		else:
 			var start_panel: StartPanel = StartPanelScene.instance()
 			panel_container.add_child(start_panel)
-			start_panel.load_dialogue(characters, data)
+			start_panel.load_start_data(characters, data)
 			
 			connect_panel(start_panel)
 			
@@ -56,14 +56,14 @@ func load_data(data_array: Array):
 		index += 1
 
 func add_panel():
-	var new_data: Dictionary = TreeRes.START
+	var new_data: DialogMaker.StartData = DialogMaker.StartData.new()
 	current_node.start_data.append(new_data)
 	
 	var new_panel: StartPanel = StartPanelScene.instance()
 	panel_container.add_child(new_panel)
-	new_panel.load_dialogue(characters, new_data)
+	new_panel.load_start_data(characters, new_data)
 	
-	new_data = new_panel.get_panel_data()
+	new_data = new_panel.get_start_data()
 	connect_panel(new_panel)
 	
 	new_panel.index = current_node.start_data.size() - 1
@@ -100,10 +100,10 @@ func move_panel(data_panel: StartPanel, new_index: int):
 	current_node.display_data()
 
 func on_edit_panel(panel: StartPanel):
-	var data: Dictionary = panel.get_panel_data()
+	var data: DialogMaker.StartData = panel.get_start_data()
 	current_node.start_data[panel.index] = data
 	
-	current_node.display_data(characters[ data["chara_id"] ].display_name)
+	current_node.display_data(characters[data.chara_id].display_name)
 	
 func on_characters_change(active: bool, _characters: Array):
 	characters = _characters

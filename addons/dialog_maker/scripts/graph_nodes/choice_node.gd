@@ -1,28 +1,34 @@
 tool
-extends TreeNode
+extends DgTreeNode
 class_name ChoiceNode
 
 func get_class(): return "ChoiceNode"
 
-var question: Dictionary = TreeRes.DIALOGUE
-var choices: Array = []
+class SaveDataChoices extends DgTreeNode.SaveData:
+	var question: DialogMaker.Dialogue
+	var choices: PoolStringArray
+	var conditions: Array
 
-func get_save_data() -> Dictionary:
-	var data: Dictionary = .get_save_data()
-	data["question"] = question
-	data["choices"] = choices
+var question: DialogMaker.Dialogue
+var choices: PoolStringArray = []
+
+func get_save_data() -> SaveDataChoices:
+	var data: SaveDataChoices
+	data.load_save_data(.get_save_data())
+	data.question = question
+	data.choices = choices
 	
 	return data
 
-func load_save_data(save_data: Dictionary):
-	.load_save_data(save_data)
-	question = save_data["question"]
-	choices = save_data["choices"]
+func load_save_data(save_data: SaveDataChoices):
+	.load_save_data(save_data.get_as_save_data())
+	question = save_data.question
+	choices = save_data.choices
 	
 	display_choices()
 
 func display_choices(only_question: bool = false):
-	$Question.text = "[" + String(question["chara_id"]) + "] " + question["text"]
+	$Question.text = "[" + String(question.chara_id) + "] " + question.text
 	if only_question: return
 	
 	var labels: Array = get_labels()

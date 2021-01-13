@@ -21,7 +21,7 @@ func _exit_tree():
 	for sig in get_signal_connection_list("condition_edited"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
-func load_condition(props: Dictionary, cond: Dictionary) -> void:
+func load_condition(props: Dictionary, cond: DialogMaker.Condition) -> void:
 	properties = props
 	
 	prop_option.clear()
@@ -31,26 +31,24 @@ func load_condition(props: Dictionary, cond: Dictionary) -> void:
 	var id: int = 0
 	for ind in properties.size():
 		#print(str("prop_ind: ", ind))
-		if prop_option.get_item_text(ind) == cond["name"]:
+		if prop_option.get_item_text(ind) == cond.prop_name:
 			id = ind
 			break
 	
 	prop_option.select(id)
 	
-	comp_option.select(cond["comparator"])
+	comp_option.select(cond.comp)
 	
-	value_edit.text = cond["value"]
+	value_edit.text = cond.value
 
 #name, type, comparator, value
-func get_condition() -> Dictionary:
-	var cond: Dictionary = {
-		"name": prop_option.get_item_text(prop_option.selected), 
-		"type": properties[prop_option.get_item_text(prop_option.selected)],
-		"comparator": comp_option.selected,
-		"value": value_edit.text
-	}
-	
-	return cond
+func get_condition() -> DialogMaker.Condition:
+	return DialogMaker.Condition.new(
+		prop_option.get_item_text(prop_option.selected),
+		properties[prop_option.get_item_text(prop_option.selected)],
+		comp_option.selected,
+		value_edit.text
+	)
 
 func on_edit(_option_id: int = -1):
 	emit_signal("condition_edited")

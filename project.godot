@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/character_res.gd"
 }, {
-"base": "TreeNode",
+"base": "DgTreeNode",
 "class": "ChoiceNode",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/graph_nodes/choice_node.gd"
@@ -24,20 +24,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/tree_editor/choice_panel.gd"
 }, {
-"base": "TreeNode",
+"base": "DgTreeNode",
 "class": "ConditionNode",
 "language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/graph_nodes/node_condition.gd"
+"path": "res://addons/dialog_maker/scripts/graph_nodes/condition_node.gd"
 }, {
 "base": "PanelContainer",
 "class": "ConditionPanel",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/tree_editor/condition_panel.gd"
 }, {
+"base": "GraphNode",
+"class": "DgTreeNode",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/scripts/graph_nodes/node_base.gd"
+}, {
 "base": "Node",
 "class": "Dialog",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/custom_nodes/dialog_node.gd"
+}, {
+"base": "Reference",
+"class": "DialogMaker",
+"language": "GDScript",
+"path": "res://addons/dialog_maker/dialog_maker_global.gd"
 }, {
 "base": "Control",
 "class": "DialogPlayer",
@@ -54,12 +64,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/res_file_finder.gd"
 }, {
-"base": "TreeNode",
+"base": "DgTreeNode",
 "class": "SecuenceNode",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/graph_nodes/secuence_node.gd"
 }, {
-"base": "TreeNode",
+"base": "DgTreeNode",
 "class": "StartNode",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/graph_nodes/start_node.gd"
@@ -68,11 +78,6 @@ _global_script_classes=[ {
 "class": "StartPanel",
 "language": "GDScript",
 "path": "res://addons/dialog_maker/scripts/tree_editor/start_panel.gd"
-}, {
-"base": "GraphNode",
-"class": "TreeNode",
-"language": "GDScript",
-"path": "res://addons/dialog_maker/scripts/graph_nodes/node_base.gd"
 }, {
 "base": "Resource",
 "class": "TreeRes",
@@ -90,14 +95,15 @@ _global_script_class_icons={
 "ChoicePanel": "",
 "ConditionNode": "",
 "ConditionPanel": "",
+"DgTreeNode": "",
 "Dialog": "res://addons/dialog_maker/icons/DialogIcon.png",
+"DialogMaker": "",
 "DialogPlayer": "res://addons/dialog_maker/icons/DialogPlay.svg",
 "DialoguePanel": "",
 "ResFileFinder": "",
 "SecuenceNode": "",
 "StartNode": "",
 "StartPanel": "",
-"TreeNode": "",
 "TreeRes": "",
 "auto_test": ""
 }
@@ -111,10 +117,6 @@ config/icon="res://icon.png"
 [autoload]
 
 AutoloadTest="*res://autoloadtest.gd"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "dialog_maker" )
 
 [input]
 

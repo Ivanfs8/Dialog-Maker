@@ -58,7 +58,7 @@ func load_secuence(secuence: Array):
 		index += 1
 
 func add_dialogue():
-	var new_dialog: Dictionary = TreeRes.DIALOGUE
+	var new_dialog: DialogMaker.Dialogue = DialogMaker.Dialogue.new()
 	current_node.secuence.append(new_dialog)
 	
 	var new_dialog_panel: DialoguePanel = DialoguePanelScene.instance()
@@ -102,10 +102,10 @@ func move_dialogue(dialog_panel: DialoguePanel, new_index: int):
 	current_node.display_secuence()
 
 func on_edit_dialogue(dialog_panel: DialoguePanel):
-	var dialog: Dictionary = dialog_panel.get_dialogue()
+	var dialog: DialogMaker.Dialogue = dialog_panel.get_dialogue()
 	current_node.secuence[dialog_panel.index] = dialog
 	
-	current_node.display_secuence(characters[ dialog["chara_id"] ].display_name)
+	current_node.display_secuence(characters[dialog.chara_id].display_name)
 	
 func on_characters_change(active: bool, _characters: Array):
 	characters = _characters

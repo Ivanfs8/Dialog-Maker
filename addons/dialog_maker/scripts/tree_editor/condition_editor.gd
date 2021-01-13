@@ -56,7 +56,7 @@ func load_conditions(conditions: Array):
 		index += 1
 
 func add_condition():
-	var new_condition: Dictionary = TreeRes.CONDITION
+	var new_condition: DialogMaker.Condition = DialogMaker.Condition.new()
 	current_node.conditions.append(new_condition)
 	
 	var new_condition_panel: ConditionPanel = ConditionalPanelScene.instance()
@@ -83,7 +83,7 @@ func delete_condition(cond_panel: ConditionPanel):
 	current_node.display_condition()
 
 func move_condition(cond_panel: ConditionPanel, new_index: int):
-	var condition: Dictionary = current_node.conditions[cond_panel.index]
+	var condition: DialogMaker.Condition = current_node.conditions[cond_panel.index]
 	current_node.conditions.remove(cond_panel.index)
 	current_node.conditions.insert(new_index, condition)
 	

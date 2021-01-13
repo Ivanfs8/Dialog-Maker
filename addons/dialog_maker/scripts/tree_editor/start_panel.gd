@@ -24,7 +24,7 @@ func _exit_tree():
 	for sig in get_signal_connection_list("panel_edited"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
-func load_dialogue(_characters: Array, data: Dictionary) -> void:
+func load_start_data(_characters: Array, data: DialogMaker.StartData) -> void:
 	#print("load dialoge: ", dialog)
 	characters = _characters
 	
@@ -33,26 +33,24 @@ func load_dialogue(_characters: Array, data: Dictionary) -> void:
 		chara = chara as CharacterRes
 		character_option.add_item(chara.display_name)
 	
-	character_option.select( int(clamp(data["chara_id"], 0, character_option.get_item_count() - 1 )) )
+	character_option.select( int(clamp(data.chara_id, 0, character_option.get_item_count() - 1 )) )
 	
-	pos_option.select(data["pos"])
-	flip_check.pressed = data["flip"]
+	pos_option.select(data.pos)
+	flip_check.pressed = data.flip
 	
-	if data["portrait"]: portrait_button.icon = data["portrait"]
-	elif characters[data["chara_id"]].portraits.size() != 0: 
-		portrait_button.icon = characters[data["chara_id"]].portraits[0]
+	if data.portrait: portrait_button.icon = data.portrait
+	elif characters[data.chara_id].portraits.size() != 0: 
+		portrait_button.icon = characters[data.chara_id].portraits[0]
 	
-	update_portrait_grid(characters[data["chara_id"]])
+	update_portrait_grid(characters[data.chara_id])
 
-func get_panel_data() -> Dictionary:
-	var dict: Dictionary = {
-		"chara_id": character_option.selected, 
-		"portrait": portrait_button.icon,
-		"pos": pos_option.selected,
-		"flip": flip_check.pressed
-	}
-
-	return dict
+func get_start_data() -> DialogMaker.StartData:
+	return DialogMaker.StartData.new(
+		character_option.selected,
+		portrait_button.icon,
+		pos_option.selected,
+		flip_check.pressed
+	)
 
 func update_portrait_grid(character: CharacterRes):
 	for child in portrait_grid.get_children(): child.queue_free()

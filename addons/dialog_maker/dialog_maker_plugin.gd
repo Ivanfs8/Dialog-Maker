@@ -1,6 +1,7 @@
 tool
 extends EditorPlugin
 
+const globals: Script = preload("res://addons/dialog_maker/dialog_maker_global.gd")
 const MainPanelScene: PackedScene = preload("res://addons/dialog_maker/scenes/TreeEditor.tscn")
 const MainPanel: Script = preload("res://addons/dialog_maker/scripts/main_panel.gd")
 #const InspectorPlugin: Script = preload("res://addons/dialog_maker/inspector_plugin.gd")
@@ -82,6 +83,6 @@ func edit(object):
 	main_panel_instance.set_tree_resource(object)
 	
 func save_external_data():
-	if main_panel_instance:
+	if main_panel_instance && main_panel_instance.tree_resource != null:
 		editor_dock_instance.save_resource()
 		main_panel_instance.save_resource()

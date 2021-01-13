@@ -25,7 +25,7 @@ func _exit_tree():
 	for sig in get_signal_connection_list("dialogue_edited"):
 		disconnect(sig["signal"], sig["target"], sig["method"])
 
-func load_dialogue(_characters: Array, dialog: Dictionary) -> void:
+func load_dialogue(_characters: Array, dialog: DialogMaker.Dialogue) -> void:
 	#print("load dialoge: ", dialog)
 	characters = _characters
 	
@@ -34,30 +34,27 @@ func load_dialogue(_characters: Array, dialog: Dictionary) -> void:
 		chara = chara as CharacterRes
 		character_option.add_item(chara.display_name)
 	
-	text_edit.text = dialog["text"]
+	text_edit.text = dialog.text
 	
-	character_option.select( int(clamp(dialog["chara_id"], 0, character_option.get_item_count() - 1 )) )
+	character_option.select( int(clamp(dialog.chara_id, 0, character_option.get_item_count() - 1 )) )
 	
-	pos_option.select(dialog["pos"])
-	flip_check.pressed = dialog["flip"]
+	pos_option.select(dialog.pos)
+	flip_check.pressed = dialog.flip
 	
-	if dialog["portrait"]: portrait_button.icon = dialog["portrait"]
-	elif characters[dialog["chara_id"]].portraits.size() != 0: 
-		portrait_button.icon = characters[dialog["chara_id"]].portraits[0]
+	if dialog.portrait: portrait_button.icon = dialog.portrait
+	elif characters[dialog.chara_id].portraits.size() != 0: 
+		portrait_button.icon = characters[dialog.chara_id].portraits[0]
 	
-	update_portrait_grid(characters[dialog["chara_id"]])
+	update_portrait_grid(characters[dialog.chara_id])
 
-func get_dialogue() -> Dictionary:
-	var dialog: Dictionary = {
-		"chara_id": character_option.selected, 
-		"text": text_edit.text,
-		"portrait": portrait_button.icon,
-		"pos": pos_option.selected,
-		"flip": flip_check.pressed
-	}
-	
-#	print("[" + String(dialog.character_id) + "] " + dialog.text)
-	return dialog
+func get_dialogue() -> DialogMaker.Dialogue:
+	return DialogMaker.Dialogue.new(
+		character_option.selected,
+		text_edit.text,
+		portrait_button.icon,
+		pos_option.selected,
+		flip_check.pressed
+	)
 
 func update_portrait_grid(character: CharacterRes):
 	for child in portrait_grid.get_children(): child.queue_free()

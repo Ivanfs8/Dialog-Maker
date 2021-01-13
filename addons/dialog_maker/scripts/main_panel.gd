@@ -22,6 +22,8 @@ func set_tree_resource(tree: TreeRes):
 	
 	$Label.hide()
 	$HSplitContainer.show()
+	
+	tree_resource.test()
 
 onready var tree_graph: GraphEdit = $HSplitContainer/TreeVBoxContainer/TreeGraphEdit
 #onready var secuence_editor = $HSplitContainer/HBoxContainer/SecuenceEditor
@@ -46,8 +48,8 @@ func save_resource():
 	if tree_resource != null:
 		tree_graph.save_resource(tree_resource)
 		
-		var tree_data: TreeData = TreeData.new(tree_resource)
-		tree_resource.tree_data = tree_data.make_tree_data()
+#		var tree_data: TreeData = TreeData.new(tree_resource)
+#		tree_resource.tree_data = tree_data.make_tree_data()
 #		tree_resource.take_over_path(tree_resource.resource_path)
 		
 		var err := ResourceSaver.save(tree_resource.resource_path, tree_resource)
@@ -70,7 +72,8 @@ class TreeData:
 		
 		var index: int = 0
 		for node in nodes_data:
-			match node["type"]:
+			node = node as DgTreeNode.SaveData
+			match node.type:
 				"StartNode": node["next"] = get_next(node["name"])
 				"SecuenceNode": node["next"] = get_next(node["name"])
 				"ChoiceNode": node["paths"] = get_paths(node)
