@@ -102,7 +102,6 @@ margin_right = 319.0
 margin_bottom = 82.0
 columns = 4
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/PortraitButton" to="." method="_on_PortraitButton_pressed"]
-[connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer/CharacterOptionButton" to="." method="on_edit"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer/CharacterOptionButton" to="." method="_on_CharacterOptionButton_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/VBoxContainer/PositionOptionButton" to="." method="on_edit"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/FlipCheckBox" to="." method="on_edit"]

@@ -31,6 +31,7 @@ func clear_choices():
 func load_choices(question: Dictionary, choices: Array):
 	#load question
 	question_panel.disconnect("dialogue_edited", self, "on_edit_question")
+	question_panel.tree_res = get_parent().tree_resource
 	question_panel.load_dialogue(characters, question)
 	current_node.question = question_panel.get_dialogue()
 	question_panel.connect("dialogue_edited", self, "on_edit_question")

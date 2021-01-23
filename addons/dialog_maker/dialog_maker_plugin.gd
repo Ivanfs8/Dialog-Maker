@@ -35,6 +35,8 @@ func _enter_tree():
 func _ready():
 	#	get_node("HSplitContainer/TreeVBoxContainer/TreeGraphEdit")
 	main_panel_instance.tree_graph.connect("node_selected", editor_dock_instance, "select_node")
+	main_panel_instance.character_tab.connect("character_changed", editor_dock_instance, "on_characters_change")
+	main_panel_instance.character_tab.connect("character_changed", editor_dock_instance.start_editor, "on_characters_change")
 	main_panel_instance.character_tab.connect("character_changed", editor_dock_instance.secuence_editor, "on_characters_change")
 	main_panel_instance.character_tab.connect("character_changed", editor_dock_instance.choice_editor, "on_characters_change")
 	main_panel_instance.properties_tab.connect("property_changed", editor_dock_instance.condition_editor, "on_properties_change")
@@ -78,7 +80,7 @@ func handles(object):
 func edit(object):
 	object = object as TreeRes
 	OS.low_processor_usage_mode = true
-	editor_dock_instance.tree_resource = object
+	editor_dock_instance.set_tree_resource(object)
 	main_panel_instance.set_tree_resource(object)
 	
 func save_external_data():

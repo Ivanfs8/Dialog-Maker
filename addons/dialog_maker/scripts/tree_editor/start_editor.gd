@@ -47,6 +47,7 @@ func load_data(data_array: Array):
 		else:
 			var start_panel: StartPanel = StartPanelScene.instance()
 			panel_container.add_child(start_panel)
+			start_panel.tree_res = get_parent().tree_resource
 			start_panel.load_start_data(characters, data)
 			
 			connect_panel(start_panel)
@@ -57,14 +58,17 @@ func load_data(data_array: Array):
 
 func add_panel():
 	var new_data: Dictionary = TreeRes.START
-	current_node.start_data.append(new_data)
 	
 	var new_panel: StartPanel = StartPanelScene.instance()
 	panel_container.add_child(new_panel)
+	new_panel.tree_res = get_parent().tree_resource
 	new_panel.load_start_data(characters, new_data)
+	new_panel.load_settings_from_res()
 	
 	new_data = new_panel.get_panel_data()
 	connect_panel(new_panel)
+	
+	current_node.start_data.append(new_data)
 	
 	new_panel.index = current_node.start_data.size() - 1
 #	print(new_dialog_panel.index)

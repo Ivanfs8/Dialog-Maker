@@ -114,7 +114,6 @@ margin_top = 114.0
 margin_right = 316.0
 margin_bottom = 114.0
 columns = 4
-[connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/CharacterOptionButton" to="." method="on_edit"]
 [connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/CharacterOptionButton" to="." method="_on_CharacterOptionButton_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/PositionOptionButton" to="." method="on_edit"]
 [connection signal="toggled" from="VBoxContainer/OptionsPanelContainer/HBoxContainer/FlipCheckBox" to="." method="on_edit"]

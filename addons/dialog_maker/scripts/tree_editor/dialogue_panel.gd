@@ -6,6 +6,7 @@ signal dialogue_edited
 
 var index: int
 
+var tree_res: TreeRes
 var characters: Array
 
 onready var text_edit: TextEdit = $VBoxContainer/HBoxContainer/TextEdit
@@ -47,6 +48,21 @@ func load_dialogue(_characters: Array, dialog: Dictionary) -> void:
 	
 	update_portrait_grid(characters[dialog["chara_id"]])
 
+func load_settings(settings: Dictionary) -> void:
+	pos_option.select(settings["pos"])
+	flip_check.pressed = settings["flip"]
+	
+	if settings["portrait"]: portrait_button.icon = settings["portrait"]
+	elif characters[character_option.selected].portraits.size() != 0: 
+		portrait_button.icon = characters[character_option.selected].portraits[0]
+	
+	update()
+	print("load_settings")
+
+func load_settings_from_res() -> void:
+	var settings: Dictionary = tree_res.character_settings[character_option.selected]
+	load_settings(settings)
+
 func get_dialogue() -> Dictionary:
 	var dialog: Dictionary = {
 		"chara_id": character_option.selected, 
@@ -71,6 +87,7 @@ func update_portrait_grid(character: CharacterRes):
 		portra_button.connect("pressed", self, "_on_portrait_selector_button_pressed", [portra])
 
 func on_edit(_option_id: int = -1):
+	tree_res.update_character_settings(character_option.selected, get_dialogue())
 	emit_signal("dialogue_edited")
 
 #active = false: a character was removed
@@ -97,9 +114,13 @@ func _on_PortraitButton_pressed():
 
 func _on_CharacterOptionButton_item_selected(index):
 	update_portrait_grid(characters[index])
-	if characters[index].portraits.size() != 0: 
-		portrait_button.icon = characters[index].portraits[0]
-	else: portrait_button.icon = null
+	
+	load_settings(tree_res.character_settings[index])
+	
+	emit_signal("dialogue_edited")
+#	if characters[index].portraits.size() != 0: 
+#		portrait_button.icon = characters[index].portraits[0]
+#	else: portrait_button.icon = null
 
 func _on_portrait_selector_button_pressed(texture: Texture):
 	portrait_button.icon = texture

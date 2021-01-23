@@ -49,6 +49,7 @@ func load_secuence(secuence: Array):
 		else:
 			var dialog_panel: DialoguePanel = DialoguePanelScene.instance()
 			dialogues_cont.add_child(dialog_panel)
+			dialog_panel.tree_res = get_parent().tree_resource
 			dialog_panel.load_dialogue(characters, dialog)
 			
 			connect_dialog(dialog_panel)
@@ -59,14 +60,20 @@ func load_secuence(secuence: Array):
 
 func add_dialogue():
 	var new_dialog: Dictionary = TreeRes.DIALOGUE
-	current_node.secuence.append(new_dialog)
+	
+	#new_dialog = get_parent().tree_resource.apply_character_settings(0, new_dialog)
 	
 	var new_dialog_panel: DialoguePanel = DialoguePanelScene.instance()
 	dialogues_cont.add_child(new_dialog_panel)
+	new_dialog_panel.tree_res = get_parent().tree_resource
+	
 	new_dialog_panel.load_dialogue(characters, new_dialog)
+	new_dialog_panel.load_settings_from_res()
 	
 	new_dialog = new_dialog_panel.get_dialogue()
 	connect_dialog(new_dialog_panel)
+	
+	current_node.secuence.append(new_dialog)
 	
 	new_dialog_panel.index = current_node.secuence.size() - 1
 #	print(new_dialog_panel.index)
@@ -86,7 +93,7 @@ func delete_dialogue(dialog_panel: DialoguePanel):
 	current_node.display_secuence()
 
 func move_dialogue(dialog_panel: DialoguePanel, new_index: int):
-	var dialog = current_node.secuence[dialog_panel.index]
+	var dialog: Dictionary = current_node.secuence[dialog_panel.index]
 	current_node.secuence.remove(dialog_panel.index)
 	current_node.secuence.insert(new_index, dialog)
 	

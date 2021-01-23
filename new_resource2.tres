@@ -169,7 +169,7 @@ nodes_data = [ {
 "flip": false,
 "portrait": ExtResource( 3 ),
 "pos": 0,
-"text": "holaa"
+"text": "hola"
 }, {
 "chara_id": 1,
 "flip": false,
@@ -181,11 +181,6 @@ nodes_data = [ {
 "type": "SecuenceNode"
 } ]
 connections = [ {
-"from": "StartNode",
-"from_port": 0,
-"to": "SecuenceNode",
-"to_port": 0
-}, {
 "from": "SecuenceNode",
 "from_port": 0,
 "to": "ChoiceNode",
@@ -229,6 +224,11 @@ connections = [ {
 "from": "ChoiceNode2",
 "from_port": 2,
 "to": "SecuenceNode6",
+"to_port": 0
+}, {
+"from": "StartNode",
+"from_port": 0,
+"to": "SecuenceNode",
 "to_port": 0
 } ]
 tree_data = {
@@ -401,7 +401,7 @@ tree_data = {
 "flip": false,
 "portrait": ExtResource( 3 ),
 "pos": 0,
-"text": "holaa"
+"text": "hola"
 }, {
 "chara_id": 1,
 "flip": false,
@@ -416,3 +416,12 @@ tree_data = {
 properties = {
 "vitality": 2
 }
+character_settings = [ {
+"flip": false,
+"portrait": ExtResource( 3 ),
+"pos": 0
+}, {
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2
+} ]

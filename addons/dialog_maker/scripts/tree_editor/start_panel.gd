@@ -6,6 +6,7 @@ signal panel_edited
 
 var index: int
 
+var tree_res: TreeRes
 var characters: Array
 
 onready var portrait_button: Button = $VBoxContainer/HBoxContainer/PortraitButton
@@ -43,6 +44,21 @@ func load_start_data(_characters: Array, data: Dictionary) -> void:
 		portrait_button.icon = characters[data["chara_id"]].portraits[0]
 	
 	update_portrait_grid(characters[data["chara_id"]])
+
+func load_settings(settings: Dictionary) -> void:
+	pos_option.select(settings["pos"])
+	flip_check.pressed = settings["flip"]
+	
+	if settings["portrait"]: portrait_button.icon = settings["portrait"]
+	elif characters[character_option.selected].portraits.size() != 0: 
+		portrait_button.icon = characters[character_option.selected].portraits[0]
+	
+	update()
+	print("load_settings")
+
+func load_settings_from_res() -> void:
+	var settings: Dictionary = tree_res.character_settings[character_option.selected]
+	load_settings(settings)
 
 func get_panel_data() -> Dictionary:
 	var dict: Dictionary = {
@@ -88,9 +104,14 @@ func _on_PortraitButton_pressed():
 
 func _on_CharacterOptionButton_item_selected(index):
 	update_portrait_grid(characters[index])
-	if characters[index].portraits.size() != 0: 
-		portrait_button.icon = characters[index].portraits[0]
-	else: portrait_button.icon = null
+	
+	load_settings(tree_res.character_settings[index])
+	
+#	if characters[index].portraits.size() != 0: 
+#		portrait_button.icon = characters[index].portraits[0]
+#	else: portrait_button.icon = null
+	
+	emit_signal("panel_edited")
 
 func _on_portrait_selector_button_pressed(texture: Texture):
 	portrait_button.icon = texture
