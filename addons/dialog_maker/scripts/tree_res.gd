@@ -65,7 +65,7 @@ func update_character_settings(id: int, dialogue: Dictionary):
 	character_settings[id]["pos"] = dialogue["pos"]
 	character_settings[id]["flip"] = dialogue["flip"]
 	
-	print("update_chara_set - id: ", id, " - pos - ", dialogue["pos"])
+	print("update_chara_set ", character_settings[id]["file_name"], " - id: ", id, " - pos - ", dialogue["pos"])
 
 func apply_character_settings(id: int, dict: Dictionary) -> Dictionary:
 	dict["portrait"] = character_settings[id]["portrait"]

@@ -12,7 +12,7 @@ script = ExtResource( 1 )
 characters = [ ExtResource( 2 ), ExtResource( 4 ) ]
 nodes_data = [ {
 "name": "StartNode",
-"next": 10,
+"next": 9,
 "offset": Vector2( -100, 200 ),
 "size": Vector2( 147, 122 ),
 "start_data": [ {
@@ -81,7 +81,7 @@ nodes_data = [ {
 "type": "SecuenceNode"
 }, {
 "affects": [ {
-"id": 9,
+"id": 7,
 "port": 1
 } ],
 "conditions": [ {
@@ -96,7 +96,7 @@ nodes_data = [ {
 "type": "ConditionNode"
 }, {
 "affects": [ {
-"id": 9,
+"id": 7,
 "port": 2
 } ],
 "conditions": [ {
@@ -109,39 +109,6 @@ nodes_data = [ {
 "offset": Vector2( 940, 200 ),
 "size": Vector2( 138, 118 ),
 "type": "ConditionNode"
-}, {
-"choices": [ "como va?", "adiu" ],
-"name": "ChoiceNode",
-"offset": Vector2( 440, 200 ),
-"paths": [ 8, 4 ],
-"question": {
-"chara_id": 0,
-"flip": false,
-"portrait": ExtResource( 3 ),
-"pos": 0,
-"text": "a"
-},
-"size": Vector2( 159, 215 ),
-"type": "ChoiceNode"
-}, {
-"name": "SecuenceNode3",
-"next": 9,
-"offset": Vector2( 680, -20 ),
-"secuence": [ {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 6 ),
-"pos": 2,
-"text": "tudo bien"
-}, {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 7 ),
-"pos": 2,
-"text": "y tu salud?"
-} ],
-"size": Vector2( 156, 150 ),
-"type": "SecuenceNode"
 }, {
 "choices": [ "estoy mal", "bien bien", "no se" ],
 "conditions": [ {
@@ -161,8 +128,22 @@ nodes_data = [ {
 "size": Vector2( 189, 290 ),
 "type": "ChoiceNode"
 }, {
+"choices": [ "como va?", "adiu" ],
+"name": "ChoiceNode",
+"offset": Vector2( 440, 200 ),
+"paths": [ 10, 4 ],
+"question": {
+"chara_id": 0,
+"flip": false,
+"portrait": ExtResource( 3 ),
+"pos": 0,
+"text": ""
+},
+"size": Vector2( 159, 215 ),
+"type": "ChoiceNode"
+}, {
 "name": "SecuenceNode",
-"next": 7,
+"next": 8,
 "offset": Vector2( 220, 200 ),
 "secuence": [ {
 "chara_id": 0,
@@ -176,6 +157,25 @@ nodes_data = [ {
 "portrait": ExtResource( 6 ),
 "pos": 2,
 "text": "aloha"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
+}, {
+"name": "SecuenceNode3",
+"next": 7,
+"offset": Vector2( 680, -20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "tudo bien"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 2,
+"text": "y tu salud?"
 } ],
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
@@ -234,7 +234,7 @@ connections = [ {
 tree_data = {
 0: {
 "name": "StartNode",
-"next": 10,
+"next": 9,
 "offset": Vector2( -100, 200 ),
 "size": Vector2( 147, 122 ),
 "start_data": [ {
@@ -308,7 +308,7 @@ tree_data = {
 },
 5: {
 "affects": [ {
-"id": 9,
+"id": 7,
 "port": 1
 } ],
 "conditions": [ {
@@ -324,7 +324,7 @@ tree_data = {
 },
 6: {
 "affects": [ {
-"id": 9,
+"id": 7,
 "port": 2
 } ],
 "conditions": [ {
@@ -339,41 +339,6 @@ tree_data = {
 "type": "ConditionNode"
 },
 7: {
-"choices": [ "como va?", "adiu" ],
-"name": "ChoiceNode",
-"offset": Vector2( 440, 200 ),
-"paths": [ 8, 4 ],
-"question": {
-"chara_id": 0,
-"flip": false,
-"portrait": ExtResource( 3 ),
-"pos": 0,
-"text": "a"
-},
-"size": Vector2( 159, 215 ),
-"type": "ChoiceNode"
-},
-8: {
-"name": "SecuenceNode3",
-"next": 9,
-"offset": Vector2( 680, -20 ),
-"secuence": [ {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 6 ),
-"pos": 2,
-"text": "tudo bien"
-}, {
-"chara_id": 1,
-"flip": false,
-"portrait": ExtResource( 7 ),
-"pos": 2,
-"text": "y tu salud?"
-} ],
-"size": Vector2( 156, 150 ),
-"type": "SecuenceNode"
-},
-9: {
 "choices": [ "estoy mal", "bien bien", "no se" ],
 "conditions": [ {
 "id": 6,
@@ -392,9 +357,24 @@ tree_data = {
 "size": Vector2( 189, 290 ),
 "type": "ChoiceNode"
 },
-10: {
+8: {
+"choices": [ "como va?", "adiu" ],
+"name": "ChoiceNode",
+"offset": Vector2( 440, 200 ),
+"paths": [ 10, 4 ],
+"question": {
+"chara_id": 0,
+"flip": false,
+"portrait": ExtResource( 3 ),
+"pos": 0,
+"text": ""
+},
+"size": Vector2( 159, 215 ),
+"type": "ChoiceNode"
+},
+9: {
 "name": "SecuenceNode",
-"next": 7,
+"next": 8,
 "offset": Vector2( 220, 200 ),
 "secuence": [ {
 "chara_id": 0,
@@ -411,17 +391,39 @@ tree_data = {
 } ],
 "size": Vector2( 156, 150 ),
 "type": "SecuenceNode"
+},
+10: {
+"name": "SecuenceNode3",
+"next": 7,
+"offset": Vector2( 680, -20 ),
+"secuence": [ {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 6 ),
+"pos": 2,
+"text": "tudo bien"
+}, {
+"chara_id": 1,
+"flip": false,
+"portrait": ExtResource( 7 ),
+"pos": 2,
+"text": "y tu salud?"
+} ],
+"size": Vector2( 156, 150 ),
+"type": "SecuenceNode"
 }
 }
 properties = {
 "vitality": 2
 }
 character_settings = [ {
+"file_name": "test_char",
 "flip": false,
 "portrait": ExtResource( 3 ),
 "pos": 0
 }, {
+"file_name": "test_char2",
 "flip": false,
-"portrait": ExtResource( 6 ),
+"portrait": ExtResource( 7 ),
 "pos": 2
 } ]

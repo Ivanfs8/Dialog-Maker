@@ -74,7 +74,9 @@ func handles(object):
 		return true
 	else:
 		main_panel_instance.invalid_tree_resource()
+		editor_dock_instance.hide_editors()
 		#main_panel_instance.set_tree_resource(null)
+		
 		return false
 
 func edit(object):
