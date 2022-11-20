@@ -1,5 +1,5 @@
 extends Node
-class_name Dialog, "res://addons/dialog_maker/icons/DialogIcon.png"
+class_name DialogNode, "res://addons/dialog_maker/icons/DialogIcon.png"
 
 signal dialog_started(_dialog, ref)
 signal dialog_ended

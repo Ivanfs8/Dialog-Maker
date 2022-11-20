@@ -30,4 +30,5 @@ autoload_properties_fetch = [ "AutoloadTest" ]
 visible = false
 input_action = "test"
 back_character_color = Color( 0.231373, 0.27451, 0.345098, 1 )
+
 [connection signal="pressed" from="Button" to="Button/Dialog" method="start_dialog"]
