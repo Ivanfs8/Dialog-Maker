@@ -30,8 +30,11 @@ It's separate from the tree editor in the same dock as the inspector, allowing i
 ## How to play dialogue
 
 You need two nodes
+
 ![Node Example](https://i.imgur.com/POO5FwK.png)
+
 The dialog node just holds a reference to the dialogue resource you want to play, and a reference to the dialogue player. Use start_dialog() as you like to play the dialogue file.
 
 The dialog player node is a premade scene that contains all possible character positions and the dialogue box. You need to define which input action will advance the dialogue in the inspector.
+
 ![Dialogue Player](https://i.imgur.com/w2H0gE5.png)
