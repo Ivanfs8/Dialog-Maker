@@ -5,10 +5,12 @@ I learned a lot from making this plugin, but it grew out of scope and there are 
 
 
 **Node Tree System:**
+
 ![Nodes Tree Demo](https://i.imgur.com/U29M7N4.png)
 
 
 **Node Editor:**
+
 ![Node Editor Demo](https://i.imgur.com/lYWPMvG.png)
 It's separate from the tree editor in the same dock as the inspector, allowing it to be resized individually
 
